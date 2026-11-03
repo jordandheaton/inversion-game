@@ -581,6 +581,11 @@
       h('span', { class: 'meter-marker' }));
   }
 
+  function roundProgress() {
+    return h('div', { class: 'round-progress', role: 'progressbar', 'aria-label': 'Posts checked', 'aria-valuemin': 0, 'aria-valuemax': state.posts.length, 'aria-valuenow': 0 },
+      state.posts.map((_, i) => h('span', { 'data-step': i, 'aria-hidden': 'true' })));
+  }
+
   function updateHud() {
     const total = state.posts.length;
     const rank = rankFor(state.score);
@@ -589,6 +594,12 @@
     set('level', rank.label);
     set('progress', `Post ${Math.min(state.index + 1, total)} of ${total}`);
     set('score', `${state.score} pts`);
+    document.querySelectorAll('.round-progress').forEach(bar => {
+      bar.setAttribute('aria-valuenow', state.answers.length);
+      bar.querySelectorAll('[data-step]').forEach((step, i) => {
+        step.dataset.state = state.answers[i] ? (state.answers[i].correct ? 'right' : 'wrong') : i === state.index ? 'current' : 'waiting';
+      });
+    });
     document.querySelectorAll('[data-hud="chip"]').forEach(el => {
       el.textContent = rank.label;
       el.style.background = color;
@@ -731,7 +742,7 @@
       iconName ? h('span', { class: `choice-icon ${isLegit ? 'is-legit' : ''}` }, icon(iconName)) : null,
       h('span', { class: 'choice-text' },
         h('span', { class: 'choice-name' }, name),
-        hint ? h('span', { class: 'choice-hint' }, hint) : null),
+        hint ? h('span', { class: 'visually-hidden' }, `. ${hint}`) : null),
       h('span', { class: 'choice-key', 'aria-hidden': 'true' }, String(index + 1)),
       h('span', { class: 'choice-mark', 'aria-hidden': 'true' }));
   }
@@ -772,6 +783,19 @@
     return cleanCode(new URLSearchParams(location.search).get('round'));
   }
 
+  function wordmark() {
+    return h('p', { class: 'site-wordmark' }, content.meta.title, h('span', { 'aria-hidden': 'true' }, '.'));
+  }
+
+  function fieldGuide() {
+    return h('details', { class: 'field-guide' },
+      h('summary', {}, icon('cap'), 'Field guide'),
+      h('ul', { class: 'guide' }, content.techniques.map(t => h('li', { 'data-guide': t.id },
+        h('span', { class: 'trick-icon' }, icon(techIcon(t))),
+        h('span', { class: 'guide-text' }, h('strong', {}, t.name), h('span', {}, t.hint)),
+        h('span', { class: 'guide-caught' })))));
+  }
+
   function renderIntro() {
     setHaze(1);
     const meta = content.meta;
@@ -779,16 +803,23 @@
     const classCode = urlRoundCode();
     const cfg = roundConfig(content);
     const roundSize = cfg ? cfg.size : content.posts.length;
-    const title = h('h1', { class: 'wordmark', tabindex: '-1' },
-      h('span', { class: 'visually-hidden' }, meta.title),
-      h('span', { class: 'wm-clear', 'aria-hidden': 'true' }, meta.title),
-      h('span', { class: 'wm-haze', 'aria-hidden': 'true' }, meta.title));
+    const title = h('h1', { class: 'cover-title', tabindex: '-1' }, 'See through', h('span', {}, 'the noise.'));
     screen('intro', h('div', { class: 'cover' },
+      h('header', { class: 'cover-header' }, wordmark(),
+        meta.course ? h('p', { class: 'course-credit' }, meta.course) : null),
       h('div', { class: 'cover-top' },
-        meta.course ? h('p', { class: 'cover-eyebrow' }, meta.course) : null,
-        title),
+        h('p', { class: 'scene-location' }, icon('basin'), 'Salt Lake Valley'),
+        title,
+        h('p', { class: 'cover-subtitle' }, meta.subtitle),
+        h('p', { class: 'cover-description' }, 'A familiar feed. A few hidden tricks. Catch the misinformation and clear the valley.'),
+        h('div', { class: 'cover-actions' },
+          h('button', { class: 'btn btn-primary btn-lg', type: 'button', onclick: () => startGame(classCode || newRoundCode()) }, 'Open the feed', icon('arrow')),
+          h('span', { class: 'cover-time' }, `${roundSize} posts · about 5 minutes`)),
+        classCode ? h('p', { class: 'cover-round' }, h('span', {}, 'Class round'), h('span', { class: 'round-code' }, classCode),
+          h('span', {}, 'Same link, same posts.')) : null),
       h('section', { class: 'cover-panel', 'aria-label': 'How to play' },
-        meta.subtitle ? h('p', { class: 'cover-lede' }, meta.subtitle) : null,
+        h('p', { class: 'label' }, 'Before you scroll'),
+        h('h2', { class: 'cover-lede' }, 'Can you spot the trick?'),
         meta.intro ? h('p', { class: 'cover-intro' }, meta.intro) : null,
         h('h2', { class: 'label' }, `${tricks.length} tricks to catch`),
         h('ul', { class: 'trick-grid' }, tricks.map(t => h('li', { class: 'trick' },
@@ -796,11 +827,8 @@
           h('span', { class: 'trick-text' }, h('strong', {}, t.name), h('span', {}, t.hint))))),
         techById[LEGIT_ID] ? h('p', { class: 'cover-note' }, icon('check'),
           h('span', {}, h('strong', {}, 'Some posts are legit. '), 'Skepticism means checking, not rejecting everything.')) : null,
-        classCode ? h('p', { class: 'cover-round' }, h('span', { class: 'label' }, 'Class round'), h('span', { class: 'round-code' }, classCode),
-          h('span', {}, 'Everyone with this link gets the same posts.')) : null,
-        h('div', { class: 'cover-actions' },
-          h('button', { class: 'btn btn-primary btn-lg', type: 'button', onclick: () => startGame(classCode || newRoundCode()) }, 'Open the feed', icon('arrow')),
-          h('span', { class: 'cover-time' }, `${roundSize} posts · about 5 minutes`)),
+        h('p', { class: 'cover-scoring' }, 'Each correct answer earns points and lifts the haze. Two posts also ask you to choose a helpful reply.')),
+      h('footer', { class: 'cover-footer' },
         h('p', { class: 'fine' },
           meta.privacy ? `${meta.privacy} ` : '',
           h('button', { class: 'link-button', type: 'button', onclick: () => renderSources(renderIntro) }, 'Sources and photo credits')))
@@ -824,43 +852,31 @@
   }
 
   function renderPlay() {
-    const meta = content.meta;
     screen('play', h('div', { class: 'play' },
       h('aside', { class: 'status', 'aria-label': 'Game status' },
+        wordmark(),
+        h('p', { class: 'scene-location' }, icon('basin'), 'Salt Lake Valley'),
+        h('h1', { class: 'status-title' }, 'See through', h('span', {}, 'the noise.')),
+        h('p', { class: 'status-description' }, 'Catch the trick. Check the facts. Clear the valley.'),
         h('div', { class: 'status-card' },
-          h('p', { class: 'status-wordmark' }, meta.title),
-          h('p', { class: 'label', style: 'margin-top:14px' }, 'Air quality now'),
-          h('p', { class: 'air-level', 'data-hud': 'level' }),
+          h('div', { class: 'status-air' }, h('p', { class: 'label' }, "Your feed’s air"),
+            h('p', { class: 'air-level', 'data-hud': 'level' })),
           meter(),
           h('div', { class: 'meter-ends', 'aria-hidden': 'true' }, h('span', {}, 'Clear'), h('span', {}, 'Socked in')),
           h('p', { class: 'status-meta' }, h('span', { 'data-hud': 'progress' }), h('span', { 'data-hud': 'score' })),
+          roundProgress(),
+          h('p', { class: 'status-note' }, 'Your points lift the haze. This is your game score.'),
           h('p', { class: 'status-round' }, 'Round ', h('span', { class: 'round-code' }, state.code))),
-        h('div', { class: 'status-card' },
-          h('p', { class: 'label' }, 'Field guide'),
-          h('ul', { class: 'guide' }, content.techniques.map(t => h('li', { 'data-guide': t.id },
-            h('span', { class: 'trick-icon' }, icon(techIcon(t))),
-            h('span', {}, t.name),
-            h('span', { class: 'guide-caught' })))))),
+        fieldGuide()),
       h('div', { class: 'device' },
         h('div', { class: 'app', id: 'app-scroll' },
-          h('div', { class: 'sky-band', 'aria-hidden': 'true' },
-            h('p', { class: 'sky-wordmark' }, meta.title),
-            h('div', { class: 'sky-readout' },
-              h('div', { class: 'sky-readout-row' },
-                h('span', { class: 'label' }, 'Air now'),
-                h('span', { class: 'air-level', 'data-hud': 'level' })),
-              meter())),
           h('header', { class: 'appbar' },
             h('div', { class: 'appbar-row' },
               h('span', { class: 'logo' }, icon('basin'), 'basin'),
               h('span', { class: 'appbar-place' }, 'Salt Lake Valley'),
-              h('span', { class: 'air-chip', 'data-hud': 'chip' })),
+              h('span', { class: 'appbar-progress', 'data-hud': 'progress' })),
             h('div', { class: 'appbar-sub' },
-              h('span', { class: 'appbar-progress' }, h('span', { 'data-hud': 'progress' }), ' · ', h('span', { 'data-hud': 'score' }))),
-            h('div', { class: 'tabs', 'aria-hidden': 'true' },
-              h('span', { class: 'tab is-active' }, 'For you'),
-              h('span', { class: 'tab' }, 'Following'),
-              h('span', { class: 'tab' }, 'Local'))),
+              roundProgress(), h('span', { class: 'appbar-score', 'data-hud': 'score' }))),
           h('main', { class: 'feed', id: 'feed', 'aria-label': 'Feed' })))
     ));
   }
@@ -878,13 +894,13 @@
     const n = state.index + 1;
     const article = postCard(post, n);
     article.append(h('section', { class: 'sheet', 'aria-labelledby': `sheet-${n}` },
-      h('h3', { class: 'sheet-title', id: `sheet-${n}` }, icon('flag'), "What's going on with this post?"),
-      h('p', { class: 'sheet-help' }, 'Pick one.', h('span', { class: 'key-tip' }, ` Keys 1–${content.techniques.length} work too.`)),
+      h('h3', { class: 'sheet-title', id: `sheet-${n}` }, "What's the trick?"),
+      h('p', { class: 'sheet-help' }, 'Some posts are accurate. Look at the reasoning.', h('span', { class: 'key-tip' }, ` Keys 1–${content.techniques.length} work too.`)),
       h('div', { class: 'choices', role: 'group', 'aria-labelledby': `sheet-${n}` },
         content.techniques.map((t, i) => choiceButton(i, t.name, t.hint, techIcon(t), t.id === LEGIT_ID, () => answerPost(t.id))))));
-    document.getElementById('feed').append(article);
+    document.getElementById('feed').replaceChildren(article);
     updateHud();
-    if (n > 1) article.scrollIntoView({ block: 'start', behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+    if (n > 1) document.querySelector('.appbar').scrollIntoView({ block: 'start', behavior: reducedMotion.matches ? 'auto' : 'smooth' });
     focusOn(article.querySelector('h2'));
   }
 
@@ -911,18 +927,20 @@
       else if (id === pickedId) markChoice(button, 'wrong', 'your answer');
     });
     revealTell(post, article);
+    article.classList.add(correct ? 'answered-right' : 'answered-wrong');
     updateHud();
 
     const tech = techById[post.answer];
     const n = state.index + 1;
-    const verdict = h('h3', { class: 'note-verdict', id: `note-${n}`, tabindex: '-1' },
+    const outcome = h('h3', { class: 'note-status-title', id: `note-${n}`, tabindex: '-1' }, correct ? 'Correct!' : 'Not quite');
+    const verdict = h('h4', { class: 'note-verdict' },
       h('span', { class: `choice-icon ${post.answer === LEGIT_ID ? 'is-legit' : ''}` }, icon(techIcon(tech))),
       tech.name);
-    article.append(h('section', { class: `note ${correct ? 'is-right' : 'is-wrong'}`, 'aria-labelledby': `note-${n}` },
+    article.querySelector('.sheet').replaceWith(h('section', { class: `note ${correct ? 'is-right' : 'is-wrong'}`, 'aria-labelledby': `note-${n}` },
       h('div', { class: 'note-head' },
-        icon(correct ? 'tick' : 'cross'),
-        h('span', { class: 'label' }, 'Air check'),
-        h('span', { class: 'note-result' }, correct ? `You caught it · +${earned}` : 'Missed this one')),
+        h('span', { class: 'outcome-icon', 'aria-hidden': 'true' }, icon(correct ? 'tick' : 'cross')),
+        h('div', {}, outcome, h('p', { class: 'note-result' }, correct ? (post.answer === LEGIT_ID ? 'You checked the facts.' : 'You spotted the trick.') : 'Here’s what to look for.')),
+        h('span', { class: 'note-points' }, correct ? `+${earned} points` : '0 points')),
       h('div', { class: 'note-body' },
         verdict,
         correct ? null : h('p', { class: 'note-picked' }, `You picked ${techById[pickedId].name}.`),
@@ -932,7 +950,7 @@
         sourceChips(post.sources),
         h('button', { class: 'btn btn-primary btn-block', type: 'button', onclick: post.reply ? openComposer : nextPost },
           post.reply ? `Reply to ${post.account.name}` : nextLabel(), icon('arrow')))));
-    focusOn(verdict, true);
+    focusOn(outcome, true);
     announce(`${correct ? `Correct, plus ${earned} points.` : 'Not quite.'} Air quality: ${rankFor(state.score).label}.`);
   }
 
@@ -977,28 +995,30 @@
     });
     updateHud();
 
+    group.hidden = true;
+    article.querySelector('.composer .sheet-help').remove();
+
     const thread = article.querySelector('.thread');
     thread.append(h('p', { class: 'bubble bubble-you' }, picked.text));
 
     const n = state.index + 1;
-    const headline = { right: 'That one lands', partial: 'Close', wrong: 'Probably not the one' }[kind];
-    const result = { right: `Best reply · +${earned}`, partial: `Partly right · +${earned}`, wrong: 'Not the best reply' }[kind];
+    const headline = { right: 'Great reply!', partial: 'A useful start', wrong: 'Try a different approach' }[kind];
+    const result = { right: 'You chose the most helpful reply.', partial: 'There’s a stronger way to make the point.', wrong: 'Here’s a more helpful way to respond.' }[kind];
     const finish = () => {
       thread.querySelector('.typing')?.remove();
       if (picked.reaction) {
         thread.append(h('div', { class: 'bubble bubble-them' }, avatarFor(post.account, 28),
           h('p', {}, h('span', { class: 'visually-hidden' }, `${post.account.name} replied: `), picked.reaction)));
       }
-      const verdict = h('h3', { class: 'note-verdict', id: `reply-note-${n}`, tabindex: '-1' }, headline);
-      article.append(h('section', { class: `note is-${kind}`, 'aria-labelledby': `reply-note-${n}` },
+      const verdict = h('h3', { class: 'note-status-title', id: `reply-note-${n}`, tabindex: '-1' }, headline);
+      article.querySelector('.composer').append(h('section', { class: `note is-${kind}`, 'aria-labelledby': `reply-note-${n}` },
         h('div', { class: 'note-head' },
-          icon(kind === 'wrong' ? 'cross' : 'tick'),
-          h('span', { class: 'label' }, 'Reply check'),
-          h('span', { class: 'note-result' }, result)),
+          h('span', { class: 'outcome-icon', 'aria-hidden': 'true' }, icon(kind === 'right' ? 'tick' : kind === 'partial' ? 'reply' : 'cross')),
+          h('div', {}, verdict, h('p', { class: 'note-result' }, result)),
+          h('span', { class: 'note-points' }, `+${earned} points`)),
         h('div', { class: 'note-body' },
-          verdict,
           h('p', {}, picked.feedback),
-          kind === 'right' ? null : h('div', { class: 'note-facts' }, h('span', { class: 'label' }, 'Why the marked draft works'), h('p', {}, best.feedback)),
+          kind === 'right' ? null : h('div', { class: 'note-facts' }, h('span', { class: 'label' }, 'A stronger reply'), h('p', {}, best.text), h('p', { class: 'reply-rationale' }, best.feedback)),
           h('button', { class: 'btn btn-primary btn-block', type: 'button', onclick: nextPost }, nextLabel(), icon('arrow')))));
       focusOn(verdict, true);
       announce(`${picked.reaction ? `${post.account.name} replied: ${picked.reaction} ` : ''}${headline}. ${earned ? `Plus ${earned} points.` : ''}`);
@@ -1012,19 +1032,7 @@
     }
   }
 
-  // Fold the finished post down to a verdict chip, then bring in the next one.
-  function collapseCurrent() {
-    const article = currentArticle();
-    const answer = state.answers[state.answers.length - 1];
-    const tech = techById[answer.answer];
-    article.querySelectorAll('.sheet, .note, .composer .choices, .composer .sheet-help, .composer-prompt').forEach(el => el.remove());
-    article.querySelector('.post-actions').after(h('p', { class: `post-verdict ${answer.correct ? 'is-right' : 'is-wrong'}` },
-      icon(answer.correct ? 'tick' : 'cross'),
-      answer.correct ? `You flagged it: ${tech.name}` : `Missed: ${tech.name}`));
-  }
-
   function nextPost() {
-    collapseCurrent();
     state.index += 1;
     if (state.index >= state.posts.length) renderEnd();
     else appendPost();
@@ -1071,7 +1079,7 @@
         rank.blurb ? h('p', { class: 'report-blurb' }, rank.blurb) : null,
         h('dl', { class: 'report-stats' },
           h('div', {}, h('dt', {}, 'Score'), h('dd', {}, `${state.score}`, h('small', {}, ` /${max}`))),
-          h('div', {}, h('dt', {}, 'Tricks caught'), h('dd', {}, `${spotted}`, h('small', {}, ` /${total}`))),
+          h('div', {}, h('dt', {}, 'Correct answers'), h('dd', {}, `${spotted}`, h('small', {}, ` /${total}`))),
           replyTotal ? h('div', {}, h('dt', {}, 'Best replies'), h('dd', {}, `${replyBest}`, h('small', {}, ` /${replyTotal}`))) : null),
         h('h2', { class: 'label' }, 'Badges'),
         h('ul', { class: 'badges' }, results.map(r => {

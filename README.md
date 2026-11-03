@@ -17,7 +17,7 @@ The feed lives in a fictional local app called "basin," shown over a real photo 
 | File | What it is |
 |---|---|
 | `index.html` | The page shell, photo backdrop, and icon set. |
-| `styles.css` | All styling (mobile-first). |
+| `styles.css`, `valley.css` | Base components and the Valley visual theme, including responsive layouts and answer feedback. |
 | `game.js` | Loads and validates `content.json`, draws each round from the post bank, then runs the game. |
 | `content.json` | **All the content**: the post bank, round rules, answers, explanations, sources, reply drafts, ratings, photo credits. The only file you need to edit. |
 | `assets/photos/`, `assets/avatars/` | Wikimedia Commons photos (public domain and Creative Commons), resized to WebP. Credits are in `content.json` and on the in-game Sources and credits screen. |
