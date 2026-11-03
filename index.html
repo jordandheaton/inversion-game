@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Inversion: Clear the Air on Climate Misinformation</title>
+  <meta name="description" content="A 5-minute game about spotting climate misinformation in a Utah social feed: Great Salt Lake, snowpack, inversions, and wildfire smoke. Built for BYU PWS 180.">
+  <meta name="theme-color" content="#c8366b">
+  <meta property="og:title" content="Inversion: Clear the Air on Climate Misinformation">
+  <meta property="og:description" content="Scroll a fake Utah feed, catch the five classic misinformation tricks, and clear the valley's air. About 5 minutes.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/photos/hero-inversion.webp" as="image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-screen="loading">
+  <!-- The valley. Intro shows a real inversion; play and results show a clear valley under a haze lid that lifts as you score. -->
+  <div class="backdrop" aria-hidden="true">
+    <img class="backdrop-photo backdrop-hero" src="assets/photos/hero-inversion.webp" alt="">
+    <img class="backdrop-photo backdrop-valley" src="assets/photos/valley-clear.webp" alt="">
+    <div class="lid"></div>
+  </div>
+
+  <div id="root" class="root">
+    <div class="page"><div class="page-card"><p>Loading the feed…</p></div></div>
+    <noscript><div class="page"><div class="page-card"><p>This game needs JavaScript turned on.</p></div></div></noscript>
+  </div>
+
+  <div id="announcer" class="visually-hidden" aria-live="polite"></div>
+
+  <!-- Icon sprite. Technique icons can be chosen per technique in content.json ("icon"). -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2.5 9.5 12 5l9.5 4.5L12 14z"/><path d="M6.5 11.7v3.8c0 1.4 2.5 2.8 5.5 2.8s5.5-1.4 5.5-2.8v-3.8"/><path d="M21.5 9.5v5.2"/></symbol>
+      <symbol id="i-chain" viewBox="0 0 24 24"><path d="m9.6 14.4-1.8 1.8a3 3 0 0 1-4.2-4.2l2.6-2.6a3 3 0 0 1 4.2 0"/><path d="m14.4 9.6 1.8-1.8a3 3 0 0 1 4.2 4.2l-2.6 2.6a3 3 0 0 1-4.2 0"/><path d="M8.2 4.2 9 6.6M4.2 8.2l2.4.8M15.8 19.8 15 17.4M19.8 15.8l-2.4-.8"/></symbol>
+      <symbol id="i-infinity" viewBox="0 0 24 24"><path d="M8 9.2c-1.9 0-3.5 1.25-3.5 2.8s1.6 2.8 3.5 2.8c3.6 0 4.4-5.6 8-5.6 1.9 0 3.5 1.25 3.5 2.8s-1.6 2.8-3.5 2.8c-3.6 0-4.4-5.6-8-5.6z"/></symbol>
+      <symbol id="i-cherry" viewBox="0 0 24 24"><circle cx="7.5" cy="16.5" r="3.5"/><circle cx="16.2" cy="17.2" r="3"/><path d="M7.5 13c1.1-4 3.6-7 7.2-9 0 4.6.5 8.4 1.5 10.2"/><path d="M14.7 4c2.2-.5 4.3.3 5.6 1.9-2.2.7-4.1.3-5.6-1.9z"/></symbol>
+      <symbol id="i-pins" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m8.6 9.3 2 5.1M11.7 15l3.8-4.6M8.8 8.7l6.4.6"/><circle cx="7.6" cy="8.5" r="1.4"/><circle cx="16.4" cy="9.4" r="1.4"/><circle cx="10.6" cy="15.6" r="1.4"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.7 2.7 5.5-5.5"/></symbol>
+      <symbol id="i-tick" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-cross" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+      <symbol id="i-reply" viewBox="0 0 24 24"><path d="M4.5 5.5h15a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H10l-4.5 3.5v-3.5h-1a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1z"/></symbol>
+      <symbol id="i-repost" viewBox="0 0 24 24"><path d="M7 7h10.5L15 4.5M17 17H6.5L9 19.5"/><path d="M4.5 13.5v-4A2.5 2.5 0 0 1 7 7M19.5 10.5v4A2.5 2.5 0 0 1 17 17"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 19.5s-7.5-4.4-7.5-9.6A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.3c0 5.2-7.5 9.6-7.5 9.6z"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V4M8 8l4-4 4 4"/><path d="M5.5 12.5v6a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-6"/></symbol>
+      <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="18.5" cy="12" r="1.3"/></symbol>
+      <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5.5 21V4.5h11l-2 3.75 2 3.75h-11"/></symbol>
+      <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M15.5 14.2c2.4-.2 4.4 1.3 5 4.3"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M17.5 13.5v4.5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.5a1 1 0 0 1 1-1h4.5"/></symbol>
+      <symbol id="i-basin" viewBox="0 0 24 24"><path d="M2.5 17.5 8.5 8l4 6.2 2.6-3.7 6.4 7"/><path d="M4 20.5h16"/></symbol>
+      <symbol id="i-snow" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9M9.5 4.5 12 6.5l2.5-2M9.5 19.5 12 17.5l2.5 2"/></symbol>
+      <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z"/></symbol>
+      <symbol id="i-verified" viewBox="0 0 24 24"><path fill="#2a6fd6" stroke="none" d="m12 2.5 2.4 1.8 3-.2.9 2.9 2.4 1.8-1 2.8 1 2.8-2.4 1.8-.9 2.9-3-.2-2.4 1.8-2.4-1.8-3 .2-.9-2.9-2.4-1.8 1-2.8-1-2.8 2.4-1.8.9-2.9 3 .2z"/><path fill="none" stroke="#fff" stroke-width="2.2" d="m8.6 12.1 2.3 2.3 4.6-4.7"/></symbol>
+    </defs>
+  </svg>
+
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,1189 @@
+{
+  "meta": {
+    "title": "Inversion",
+    "subtitle": "Clear the air on climate misinformation",
+    "version": "2.0",
+    "lastReviewed": "2026-11-01",
+    "author": "Jordan Heaton",
+    "course": "PWS 180: Climate Change: Science and Solutions (BYU)",
+    "intro": "Each post in this feed is either legit or using a classic misinformation trick. Name the trick to clear the air.",
+    "privacy": "No login. Nothing you do here is saved or sent anywhere."
+  },
+  "scoring": {
+    "techniquePoints": 100,
+    "replyPoints": 50
+  },
+  "round": {
+    "size": 10,
+    "legit": 2,
+    "replies": 2,
+    "alarmist": 1,
+    "maxPerTopic": 2
+  },
+  "techniques": [
+    {
+      "id": "fake-experts",
+      "name": "Fake Experts",
+      "hint": "Wrong-field credentials, or a few voices dressed up as \"the experts\"",
+      "definition": "Presenting someone as an authority when their expertise isn't in climate science, or making a tiny minority look like a real scientific debate.",
+      "icon": "cap"
+    },
+    {
+      "id": "logical-fallacies",
+      "name": "Logical Fallacy",
+      "hint": "The conclusion doesn't follow from the facts",
+      "definition": "An argument whose conclusion doesn't follow from its premises: oversimplifying, attacking the person, false choices, or \"it happened naturally before, so it's natural now.\"",
+      "icon": "chain"
+    },
+    {
+      "id": "impossible-expectations",
+      "name": "Impossible Expectations",
+      "hint": "Demands perfect certainty before accepting anything",
+      "definition": "Demanding unrealistic certainty, like perfect day-to-day forecasts, before accepting well-established science.",
+      "icon": "infinity"
+    },
+    {
+      "id": "cherry-picking",
+      "name": "Cherry Picking",
+      "hint": "Spotlights the data that fits, hides the rest",
+      "definition": "Choosing the one year, place, or data point that supports a claim while ignoring the larger body of evidence.",
+      "icon": "cherry"
+    },
+    {
+      "id": "conspiracy",
+      "name": "Conspiracy Theory",
+      "hint": "Assumes a secret plot behind the science",
+      "definition": "Claiming that scientists, agencies, or \"they\" are secretly coordinating a lie, and treating any counter-evidence as part of the cover-up.",
+      "icon": "pins"
+    },
+    {
+      "id": "legit",
+      "name": "Looks Legit",
+      "hint": "Accurate, sourced, not overstated",
+      "definition": "Not every post is misinformation. Accurate posts make specific claims, name sources you can check, and don't stretch the evidence.",
+      "icon": "check"
+    }
+  ],
+  "posts": [
+    {
+      "id": "co2-orthodontist",
+      "topic": "co2",
+      "account": {
+        "name": "Mountain Common Sense",
+        "handle": "@mtn_common_sense",
+        "avatar": "assets/avatars/mountains.webp",
+        "verified": true
+      },
+      "time": "3h",
+      "text": "finally someone with real credentials says it 👇 share before this gets taken down",
+      "graphic": {
+        "type": "quote",
+        "quote": "CO₂ is too small a slice of the air to warm anything.",
+        "attribution": "Dr. Rex Holloway, DDS"
+      },
+      "tell": "DDS",
+      "likes": 2381,
+      "shares": 904,
+      "replies": 312,
+      "answer": "fake-experts",
+      "explanation": "DDS means dentist. Fixing teeth isn’t climate expertise, and a blue check isn’t either. Ask what the expert actually studies.",
+      "fact": "Over 99% of climate studies agree humans are warming the planet, and NASA explains how CO₂ traps heat.",
+      "sources": [
+        {
+          "label": "Greater than 99% consensus on human caused climate change in the peer-reviewed scientific literature (Lynas, Houlton & Perry)",
+          "publisher": "Environmental Research Letters",
+          "year": 2021,
+          "url": "https://iopscience.iop.org/article/10.1088/1748-9326/ac2966",
+          "status": "verified",
+          "check": "Checked 2026-10-31. Abstract: consensus \"exceeds 99% in the peer reviewed scientific literature.\""
+        },
+        {
+          "label": "The Causes of Climate Change",
+          "publisher": "NASA Science",
+          "year": 2026,
+          "url": "https://science.nasa.gov/climate-change/causes/",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"About 90% of this heat is then absorbed by greenhouse gases and re-radiated, slowing heat loss to space.\""
+        }
+      ]
+    },
+    {
+      "id": "snowpack-record",
+      "topic": "snowpack",
+      "account": {
+        "name": "Powder Day Pete",
+        "handle": "@powderday_pete",
+        "avatar": "assets/avatars/baldy.webp"
+      },
+      "time": "5h",
+      "text": "2023: BIGGEST snowpack Utah has EVER recorded ❄️❄️ remember when they said climate change was killing our winters?? lol #sendit",
+      "image": {
+        "src": "assets/photos/post-snowpack.webp",
+        "alt": "Deep snow on the slopes and cabins of Little Cottonwood Canyon near Alta, with peaks behind.",
+        "credit": "Photo: Baileypalblue, public domain"
+      },
+      "tell": "BIGGEST snowpack Utah has EVER recorded",
+      "likes": 5120,
+      "shares": 1377,
+      "replies": 402,
+      "answer": "cherry-picking",
+      "explanation": "2023 really was a record, but one year isn’t a trend. Cherry picking spotlights the one data point that fits.",
+      "fact": "From 1955 to 2023, April snowpack fell at 81% of measured sites across the western U.S.",
+      "sources": [
+        {
+          "label": "Utah Water Conditions Update (2023 water year recap)",
+          "publisher": "Utah Division of Water Resources",
+          "year": 2023,
+          "url": "https://water.utah.gov/wp-content/uploads/2024/08/Utah-Water-Conditions-Update-10-12-23.pdf",
+          "status": "verified",
+          "check": "Checked 2026-10-31 (PDF). \"Statewide snow water equivalent (SWE) peaked on April 8 at 30.0\", which was 216% of normal. This was a new record for Utah.\""
+        },
+        {
+          "label": "Climate Change Indicators: Snowpack (archived Jan 19, 2025)",
+          "publisher": "U.S. EPA",
+          "year": 2025,
+          "url": "https://19january2025snapshot.epa.gov/climate-indicators/climate-change-indicators-snowpack",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"From 1955 to 2023, April snowpack declined at 81 percent of the sites measured\" and \"about an 18 percent decline.\" The live epa.gov URL returned 404, so this links EPA's official archive."
+        }
+      ]
+    },
+    {
+      "id": "weather-app",
+      "topic": "weather",
+      "account": {
+        "name": "Tanner M.",
+        "handle": "@tanner.m.801",
+        "avatar": "assets/avatars/truck.webp"
+      },
+      "time": "8h",
+      "text": "app said 8 inches at sundance saturday. we got a dusting 🙄 and i’m supposed to trust climate models about 2100??",
+      "graphic": {
+        "type": "forecast",
+        "place": "Sundance",
+        "day": "Saturday",
+        "amount": "8 in",
+        "detail": "Heavy snow · High 24°",
+        "note": "Forecast from Thursday"
+      },
+      "tell": "trust climate models about 2100??",
+      "likes": 742,
+      "shares": 96,
+      "replies": 58,
+      "answer": "impossible-expectations",
+      "explanation": "Demanding perfect weekend forecasts before trusting climate projections is an impossible expectation. Weather is one coin flip; climate is a thousand.",
+      "fact": "NASA: 14 of 17 climate models from 1970–2007 matched later warming once actual CO₂ and other drivers were accounted for.",
+      "sources": [
+        {
+          "label": "Study Confirms Climate Models are Getting Future Warming Projections Right",
+          "publisher": "NASA Science",
+          "year": 2020,
+          "url": "https://science.nasa.gov/earth/climate-change/study-confirms-climate-models-are-getting-future-warming-projections-right/",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"17 increasingly sophisticated model projections ... developed between 1970 and 2007\"; 10 matched closely, and after accounting for actual CO2 and other drivers \"the number increased to 14.\""
+        },
+        {
+          "label": "Evaluating the performance of past climate model projections (Hausfather, Drake, Abbott & Schmidt)",
+          "publisher": "Geophysical Research Letters",
+          "year": 2020,
+          "url": "https://www.giss.nasa.gov/pubs/abs/ha08910q.html",
+          "status": "verified",
+          "check": "Checked 2026-10-31 (NASA GISS abstract page). Models published 1970-2007, \"most models examined showing warming consistent with observations.\""
+        }
+      ]
+    },
+    {
+      "id": "inversion-psa",
+      "topic": "air",
+      "account": {
+        "name": "Maya Lund",
+        "handle": "@mayalund_slc",
+        "avatar": "assets/avatars/retriever.webp"
+      },
+      "time": "10h",
+      "text": "red air day again 😷 mountains trap it but the pollution is ours. utah DEQ says vehicles make almost half the emissions behind winter smog. carpool if u can 🚗",
+      "image": {
+        "src": "assets/photos/post-inversion.webp",
+        "alt": "Downtown Salt Lake City towers fading into brown haze, with the mountains barely visible behind them.",
+        "credit": "Photo: Eltiempo10, CC BY-SA 4.0"
+      },
+      "tell": "utah DEQ says",
+      "tellNote": "Checkable source",
+      "likes": 318,
+      "shares": 121,
+      "replies": 22,
+      "answer": "legit",
+      "explanation": "Legit: a source you can check, a claim that matches it, no overstatement. Skepticism means checking, not rejecting everything.",
+      "fact": "Utah DEQ: during an inversion, cold air gets trapped under warmer air, holding pollution near the ground.",
+      "sources": [
+        {
+          "label": "Inversions",
+          "publisher": "Utah Department of Environmental Quality",
+          "url": "https://deq.utah.gov/daq/inversions",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"Cold air at the surface gets trapped under a layer of warmer air\"; \"Pollutants from vehicles, wood burning, area sources, and industry become trapped near the ground.\""
+        },
+        {
+          "label": "PM2.5 Moderate Area State Implementation Plans (2009-2014)",
+          "publisher": "Utah Department of Environmental Quality",
+          "url": "https://deq.utah.gov/air-quality/pm2-5-moderate-sips-2009-2014",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"Vehicles contribute almost half of the emissions that lead to the formation of PM2.5 during winter inversions.\""
+        },
+        {
+          "label": "Utah's Air Quality Challenges",
+          "publisher": "Utah Department of Government Operations",
+          "url": "https://govops.utah.gov/resource-stewardship/air-quality-issues/utahs-air-quality-challenges/",
+          "status": "verified",
+          "check": "Checked 2026-10-31. Mobile sources 48%, area sources 39%, point sources 13% \"of a typical inversion.\" (Mobile includes trains and aircraft, not just cars.)"
+        }
+      ]
+    },
+    {
+      "id": "lake-bonneville",
+      "topic": "bonneville",
+      "account": {
+        "name": "Uncle Gary",
+        "handle": "@gary.in.layton",
+        "avatar": "assets/avatars/lake.webp",
+        "relation": "Your uncle"
+      },
+      "time": "12h",
+      "text": "hiked the Bonneville Shoreline Trail today. this whole valley used to be underwater! lake shrank all on its own, no SUVs back then 😉 climate ALWAYS changes",
+      "image": {
+        "src": "assets/photos/post-bonneville.webp",
+        "alt": "A dirt trail along a dry foothill bench high above the Salt Lake Valley.",
+        "credit": "Photo: Michlaovic, public domain"
+      },
+      "tell": "climate ALWAYS changes",
+      "likes": 64,
+      "shares": 12,
+      "replies": 9,
+      "answer": "logical-fallacies",
+      "explanation": "True start, false finish. Natural causes changed past climates, but that doesn’t mean they’re causing today’s change. Natural wildfires don’t make arson impossible.",
+      "fact": "NASA: human activities are driving the global warming trend observed since the mid-20th century.",
+      "sources": [
+        {
+          "label": "The Causes of Climate Change",
+          "publisher": "NASA Science",
+          "year": 2026,
+          "url": "https://science.nasa.gov/climate-change/causes/",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"Human activities are driving the global warming trend observed since the mid-20th century.\""
+        },
+        {
+          "label": "Commonly Asked Questions About Utah's Great Salt Lake & Lake Bonneville",
+          "publisher": "Utah Geological Survey",
+          "url": "https://geology.utah.gov/popular/great-salt-lake/commonly-asked-questions/",
+          "status": "TODO: VERIFY",
+          "check": "Confirm on the page: Lake Bonneville existed ~30,000 to 13,000 years ago, was ~20,000 sq mi at its peak (~18,000 years ago), and shrank as the climate warmed and dried (plus the Bonneville Flood). The page loaded, but its Bonneville section only came back as a summary, not exact text."
+        },
+        {
+          "label": "IPCC AR6 Working Group I, Summary for Policymakers, statement A.1",
+          "publisher": "IPCC",
+          "year": 2021,
+          "url": "https://www.ipcc.ch/report/ar6/wg1/chapter/summary-for-policymakers/",
+          "status": "TODO: VERIFY",
+          "check": "Confirm A.1 reads: \"It is unequivocal that human influence has warmed the atmosphere, ocean and land.\" ipcc.ch blocked the automated check (HTTP 403)."
+        }
+      ],
+      "reply": {
+        "prompt": "Which reply is most likely to help Uncle Gary?",
+        "options": [
+          {
+            "text": "True, Bonneville shrank naturally! But that doesn’t make today’s warming natural, any more than wildfires make arson impossible.",
+            "points": 50,
+            "feedback": "Agrees with what’s true, then breaks the logic with an analogy he can picture.",
+            "reaction": "Huh. Fair point about the arson thing."
+          },
+          {
+            "text": "People say climate always changes, so humans can’t be causing it. Common argument, but today’s warming is from us.",
+            "points": 25,
+            "feedback": "Accurate, but it opens by repeating the myth, which can make it stick.",
+            "reaction": "Hm. Still think it’s natural."
+          },
+          {
+            "text": "Bonneville changed over thousands of years. NASA says the warming since the mid-1900s is driven by human activity.",
+            "points": 25,
+            "feedback": "True and sourced, but it never says why his reasoning fails.",
+            "reaction": "Okay, professor 😂"
+          },
+          {
+            "text": "Respectfully, Uncle Gary, that’s a classic denier talking point. If you read up on it you’d see why 🙂",
+            "points": 0,
+            "feedback": "Polite words, but “denier” and “read up” call him dumb. People dig in.",
+            "reaction": "Wow. Okay then. 🙄"
+          }
+        ]
+      }
+    },
+    {
+      "id": "smoke-conspiracy",
+      "topic": "smoke",
+      "account": {
+        "name": "Wake Up Wasatch",
+        "handle": "@wakeupwasatch",
+        "avatar": "assets/avatars/eagle.webp"
+      },
+      "time": "1d",
+      "text": "notice how the smoke “crisis” always shows up right when they want new climate rules? 🤔 coincidence?? follow the money. #WakeUpUtah",
+      "image": {
+        "src": "assets/photos/post-smoke.webp",
+        "alt": "Downtown Salt Lake City seen down a residential street under a gray, smoky sky.",
+        "credit": "Photo: MagpierBrady, CC BY 4.0"
+      },
+      "tell": "follow the money",
+      "likes": 3907,
+      "shares": 2210,
+      "replies": 611,
+      "answer": "conspiracy",
+      "explanation": "Conspiracy framing imagines a secret plot and treats any counter-evidence as part of the cover-up. Ask: who exactly is \"they\"?",
+      "fact": "A peer-reviewed study found human-caused climate change nearly doubled western U.S. forest fire area from 1984 to 2015.",
+      "sources": [
+        {
+          "label": "Impact of anthropogenic climate change on wildfire across western US forests (Abatzoglou & Williams), PNAS 113(42)",
+          "publisher": "FRAMES record of the PNAS abstract",
+          "year": 2016,
+          "url": "https://www.frames.gov/catalog/55249",
+          "status": "verified",
+          "check": "Checked 2026-10-31. Abstract: \"an additional 4.2 million ha of forest fire area during 1984-2015, nearly doubling the forest fire area expected in its absence.\" (pnas.org itself blocked the automated check.)"
+        },
+        {
+          "label": "Study: Human-caused climate change has doubled western US forest fire area",
+          "publisher": "University of Idaho via EurekAlert!",
+          "year": 2016,
+          "url": "https://www.eurekalert.org/news-releases/816713",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"an additional 16,000 square miles of western forest lands to burn between 1984 and 2015.\""
+        }
+      ]
+    },
+    {
+      "id": "gsl-rebound",
+      "topic": "gsl",
+      "account": {
+        "name": "Aunt Deb",
+        "handle": "@deb_in_davis",
+        "avatar": "assets/avatars/sego.webp",
+        "relation": "Your aunt"
+      },
+      "time": "1d",
+      "text": "Remember when the “experts” said the lake would be GONE?? Went out to the state park today and it’s way up. Crisis over!! 🙌",
+      "image": {
+        "src": "assets/photos/post-gsl.webp",
+        "alt": "A wide, dry, salt-crusted shoreline at Great Salt Lake State Park, with mountains behind.",
+        "credit": "Photo: Farragutful, CC BY-SA 4.0"
+      },
+      "tell": "it’s way up. Crisis over!!",
+      "likes": 211,
+      "shares": 58,
+      "replies": 31,
+      "answer": "cherry-picking",
+      "explanation": "One record snow year raised the lake, but it never got healthy and has dropped again. Judging by the best year is cherry picking.",
+      "fact": "The lake peaked in 2023 about 5½ feet above its record low. By January 2026 it was only about 3 feet above it.",
+      "sources": [
+        {
+          "label": "How much did Utah's record snowpack help the Great Salt Lake? (KSL.com, Great Salt Lake Collaborative)",
+          "publisher": "Standard-Examiner",
+          "year": 2023,
+          "url": "https://www.standard.net/news/environment/2023/jul/04/how-much-did-utahs-record-snowpack-help-the-great-salt-lake/",
+          "status": "verified",
+          "check": "Checked 2026-10-31. Peaked \"about 4,194.1 feet\" in mid-June 2023; \"gained about 5½ feet above the all-time record low\"; in early July it was \"about 4 feet below the low-end estimate of what the lake needs to be considered healthy.\""
+        },
+        {
+          "label": "The Great Salt Lake begins the new year teetering near record lows (Salt Lake Tribune)",
+          "publisher": "Utah Public Radio",
+          "year": 2026,
+          "url": "https://www.upr.org/utah-news/2026-01-07/the-great-salt-lake-begins-the-new-year-teetering-near-record-lows",
+          "status": "verified",
+          "check": "Checked 2026-10-31. South end \"sits at 4,191.6 feet\"; \"only three feet higher than its record low\" (4,188.5 ft, Nov 2022); the 2023 snowpack gave \"a temporary boost.\""
+        },
+        {
+          "label": "Emergency Measures Needed to Rescue Great Salt Lake From Ongoing Collapse (Abbott et al.)",
+          "publisher": "Brigham Young University",
+          "year": 2023,
+          "url": "https://digitalcommons.usu.edu/wats_facpub/1212",
+          "status": "verified",
+          "check": "Checked 2026-10-31. Published Jan 4, 2023; lead author Benjamin W. Abbott. The warning was conditional: \"Without a dramatic increase in water flow to the lake in 2023 and 2024.\""
+        }
+      ],
+      "reply": {
+        "prompt": "Which reply is most likely to help Aunt Deb?",
+        "options": [
+          {
+            "text": "So fun you went! Sadly that 2023 jump didn’t last. By January 2026 it was near its record low again.",
+            "points": 50,
+            "feedback": "Warm, plain about the fact, and shows why one good year misleads.",
+            "reaction": "Oh! I didn’t know it dropped again 💕"
+          },
+          {
+            "text": "Actually, the lake was only about 3 feet above its record low in January 2026. The 2023 rise didn’t last.",
+            "points": 25,
+            "feedback": "Accurate, but “Actually” plus numbers sounds like a correction, not a chat.",
+            "reaction": "Okay, Mr. Encyclopedia 🙄"
+          },
+          {
+            "text": "Glad you got out there! I’ve heard it still has a ways to go, but it’s great it got some water 💙",
+            "points": 25,
+            "feedback": "Kind, but it never says the rise didn’t last, so the myth survives.",
+            "reaction": "Right?! Crisis over 🙌"
+          },
+          {
+            "text": "The scientists who study it for a living would probably disagree, Deb. Maybe check the data first? 🙂",
+            "points": 0,
+            "feedback": "Sounds polite, but it implies Deb can’t think. She’ll defend the post.",
+            "reaction": "Wow. I CAN read, thanks."
+          }
+        ]
+      }
+    },
+    {
+      "id": "gsl-only-climate",
+      "topic": "gsl",
+      "side": "alarmist",
+      "account": {
+        "name": "Kai Reyes 🌍",
+        "handle": "@kai_for_the_planet",
+        "initials": "KR",
+        "avatar": "assets/avatars/earth.webp"
+      },
+      "time": "2d",
+      "text": "the great salt lake is dying ONLY because of climate change. our water use has nothing to do with it 💔 share if you care",
+      "image": {
+        "src": "assets/photos/post-modis.webp",
+        "alt": "Satellite image of the Great Salt Lake in June 2022, ringed by wide pale areas of exposed lakebed.",
+        "credit": "Image: NASA, public domain"
+      },
+      "tell": "ONLY because of climate change",
+      "likes": 4466,
+      "shares": 1893,
+      "replies": 388,
+      "answer": "logical-fallacies",
+      "explanation": "Misinformation comes from every direction. Blaming one cause oversimplifies: so far, the biggest factor is water diverted before it reaches the lake.",
+      "fact": "Utah Geological Survey: experts estimate water diversions have lowered the lake 7 to 11 feet and roughly halved its volume.",
+      "sources": [
+        {
+          "label": "Commonly Asked Questions About Utah's Great Salt Lake & Lake Bonneville",
+          "publisher": "Utah Geological Survey",
+          "url": "https://geology.utah.gov/popular/great-salt-lake/commonly-asked-questions/",
+          "status": "verified",
+          "check": "Checked 2026-10-31 (exact text). \"Water resource experts estimate that water appropriations have lowered the lake some 7 to 11 feet, and have roughly halved its volume.\""
+        },
+        {
+          "label": "Decline of the world's saline lakes (Wurtsbaugh et al.)",
+          "publisher": "Nature Geoscience",
+          "year": 2017,
+          "url": "https://www.nature.com/articles/ngeo3052",
+          "status": "TODO: VERIFY",
+          "check": "Confirm the abstract concludes that consumptive water use, not long-term climate change, has greatly reduced Great Salt Lake. nature.com redirected the automated check to a login page."
+        }
+      ]
+    },
+    {
+      "id": "hypocrite",
+      "topic": "personal-action",
+      "account": {
+        "name": "Brody K.",
+        "handle": "@brody.k.utah",
+        "initials": "BK"
+      },
+      "time": "2d",
+      "text": "lol everyone posting about climate change from their iphone in their car 🤡 live in a cave or stop talking",
+      "tell": "live in a cave or stop talking",
+      "likes": 1560,
+      "shares": 233,
+      "replies": 190,
+      "answer": "logical-fallacies",
+      "explanation": "This attacks the messenger and sets up a false choice: be perfect or be quiet. PWS 180 calls personal vs. systemic action \"the greatest false choice.\"",
+      "fact": "IPCC: changes in how we use energy and goods could cut end-use emissions 40–70% by 2050, with policy support.",
+      "sources": [
+        {
+          "label": "IPCC AR6 Working Group III, Summary for Policymakers, statement C.10",
+          "publisher": "IPCC",
+          "year": 2022,
+          "url": "https://www.ipcc.ch/report/ar6/wg3/chapter/summary-for-policymakers/",
+          "status": "TODO: VERIFY",
+          "check": "Confirm C.10: demand-side measures could reduce end-use sector emissions 40-70% by 2050 vs. baseline, and that infrastructure and policy enable those changes. ipcc.ch blocked the automated check (HTTP 403)."
+        },
+        {
+          "label": "PWS 180 syllabus, Section 4: \"The greatest false choice: personal action and systemic change\"",
+          "publisher": "BYU, Prof. Ben Abbott",
+          "year": 2026,
+          "status": "verified",
+          "check": "Checked 2026-10-31 against the 2026 syllabus (Overview of Schedule, Section 4)."
+        }
+      ]
+    },
+    {
+      "id": "snowpack-water",
+      "topic": "snowpack",
+      "account": {
+        "name": "Jess Tanaka",
+        "handle": "@jess.tanaka.h2o",
+        "initials": "JT"
+      },
+      "time": "3d",
+      "text": "saw this from the Utah Division of Water Resources and it kind of blew my mind 🤯 winter snow is literally our summer water",
+      "graphic": {
+        "type": "stat",
+        "value": "95%",
+        "caption": "of Utah’s water supply comes from snowpack",
+        "source": "Utah Division of Water Resources"
+      },
+      "tell": "Utah Division of Water Resources",
+      "tellNote": "Checkable source",
+      "likes": 489,
+      "shares": 167,
+      "replies": 24,
+      "answer": "legit",
+      "explanation": "Legit: specific, sourced, and it doesn’t stretch the evidence into a bigger claim.",
+      "fact": "Utah Division of Water Resources: \"In Utah, about 95% of our water supply comes from snowpack.\"",
+      "sources": [
+        {
+          "label": "Utah Water Conditions Update May 2024",
+          "publisher": "Utah Division of Water Resources",
+          "year": 2024,
+          "url": "https://water.utah.gov/utah-water-conditions-update-may-2024",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"In Utah, about 95% of our water supply comes from snowpack.\""
+        }
+      ]
+    },
+    {
+      "id": "its-the-sun",
+      "topic": "sun",
+      "account": {
+        "name": "Ron Pettersen",
+        "handle": "@ron_p_outdoors",
+        "initials": "RP"
+      },
+      "time": "6h",
+      "text": "the SUN controls the climate. always has. more sunspots = warmer earth. the rest is politics ☀️ #DoYourOwnResearch",
+      "tell": "the SUN controls the climate.",
+      "likes": 933,
+      "shares": 287,
+      "replies": 144,
+      "answer": "logical-fallacies",
+      "explanation": "The sun matters, but this squeezes a complex system into one cause and ignores what the sun has done lately.",
+      "fact": "NASA: solar energy reaching Earth shows no net increase since the 1950s, while global temperature has risen markedly.",
+      "sources": [
+        {
+          "label": "Is the Sun causing global warming?",
+          "publisher": "NASA Science",
+          "year": 2024,
+          "url": "https://science.nasa.gov/climate-change/faq/is-the-sun-causing-global-warming/",
+          "status": "verified",
+          "check": "Checked 2026-10-31. Solar energy shows \"no net increase since the 1950s. Over the same period, global temperature has risen markedly.\""
+        }
+      ]
+    },
+    {
+      "id": "declaration",
+      "topic": "consensus",
+      "account": {
+        "name": "The Contrarian Corner",
+        "handle": "@contrarian_corner",
+        "initials": "CC"
+      },
+      "time": "9h",
+      "text": "the “consensus” is falling apart 👇 1,600 scientists can’t all be wrong",
+      "graphic": {
+        "type": "link",
+        "outlet": "The Cutthroat Courier",
+        "headline": "1,600 Scientists Sign Declaration: “There Is No Climate Emergency”"
+      },
+      "tell": "1,600 scientists can’t all be wrong",
+      "likes": 2710,
+      "shares": 1544,
+      "replies": 503,
+      "answer": "fake-experts",
+      "explanation": "A list of signatures isn’t evidence. Ask who signed and what they study. The published research points overwhelmingly the other way.",
+      "fact": "Over 99% of peer-reviewed studies on climate change agree that humans are causing it.",
+      "sources": [
+        {
+          "label": "Greater than 99% consensus on human caused climate change in the peer-reviewed scientific literature (Lynas, Houlton & Perry)",
+          "publisher": "Environmental Research Letters",
+          "year": 2021,
+          "url": "https://iopscience.iop.org/article/10.1088/1748-9326/ac2966",
+          "status": "verified",
+          "check": "Checked 2026-10-31. Abstract: consensus \"exceeds 99% in the peer reviewed scientific literature.\""
+        }
+      ]
+    },
+    {
+      "id": "gsl-certainty",
+      "topic": "gsl",
+      "account": {
+        "name": "Wade L.",
+        "handle": "@wade_on_the_farm",
+        "initials": "WL"
+      },
+      "time": "4h",
+      "text": "scientists can’t even say exactly WHEN the lake bottoms out. until they can, why should farmers give up water? 🤷‍♂️",
+      "tell": "can’t even say exactly WHEN the lake bottoms out",
+      "likes": 388,
+      "shares": 96,
+      "replies": 71,
+      "answer": "impossible-expectations",
+      "explanation": "Demanding an exact date before acting is an impossible expectation. Uncertainty about timing doesn’t change which way the lake is heading.",
+      "fact": "In 2023, researchers warned the lake faced collapse without a big increase in inflow. In January 2026 it sat near record lows.",
+      "sources": [
+        {
+          "label": "Emergency Measures Needed to Rescue Great Salt Lake From Ongoing Collapse (Abbott et al.)",
+          "publisher": "Brigham Young University",
+          "year": 2023,
+          "url": "https://digitalcommons.usu.edu/wats_facpub/1212",
+          "status": "verified",
+          "check": "Checked 2026-10-31. Published Jan 4, 2023; lead author Benjamin W. Abbott. The warning was conditional: \"Without a dramatic increase in water flow to the lake in 2023 and 2024.\""
+        },
+        {
+          "label": "The Great Salt Lake begins the new year teetering near record lows (Salt Lake Tribune)",
+          "publisher": "Utah Public Radio",
+          "year": 2026,
+          "url": "https://www.upr.org/utah-news/2026-01-07/the-great-salt-lake-begins-the-new-year-teetering-near-record-lows",
+          "status": "verified",
+          "check": "Checked 2026-10-31. South end \"sits at 4,191.6 feet\"; \"only three feet higher than its record low\" (4,188.5 ft, Nov 2022); the 2023 snowpack gave \"a temporary boost.\""
+        }
+      ]
+    },
+    {
+      "id": "noaa-adjusts",
+      "topic": "data",
+      "account": {
+        "name": "Utah Skeptic Weekly",
+        "handle": "@utahskeptic",
+        "initials": "US"
+      },
+      "time": "7h",
+      "text": "they literally change the old temperature records to make the past look colder 🤔 ask yourself WHY",
+      "graphic": {
+        "type": "link",
+        "outlet": "The Salt Flats Sentinel",
+        "headline": "NOAA Caught Rewriting Utah’s Temperature History"
+      },
+      "tell": "ask yourself WHY",
+      "likes": 1288,
+      "shares": 640,
+      "replies": 219,
+      "answer": "conspiracy",
+      "explanation": "Conspiracy framing turns routine, published corrections into a secret plot. The adjustments are explained in peer-reviewed papers anyone can read.",
+      "fact": "Scientists correct records for station moves and new instruments. Worldwide, adjustments actually reduce the long-term warming trend.",
+      "sources": [
+        {
+          "label": "The U.S. Historical Climatology Network monthly temperature data, version 2 (Menne, Williams & Vose)",
+          "publisher": "Bulletin of the American Meteorological Society",
+          "year": 2009,
+          "url": "https://www.ncei.noaa.gov/pub/data/ushcn/v2/monthly/menne-etal2009.pdf",
+          "status": "verified",
+          "check": "Checked 2026-11-01 (PDF). Records are \"corrected\" for \"historical changes in station location, instrumentation, and observing practice.\""
+        },
+        {
+          "label": "Explainer: How data adjustments affect global temperature records (Zeke Hausfather)",
+          "publisher": "Carbon Brief",
+          "year": 2017,
+          "url": "https://www.carbonbrief.org/explainer-how-data-adjustments-affect-global-temperature-records",
+          "status": "verified",
+          "check": "Checked 2026-11-01. \"adjustments actually have the net effect of reducing the amount of long-term warming\" (mostly from ocean data; land adjustments add warming)."
+        }
+      ]
+    },
+    {
+      "id": "cloud-seeding",
+      "topic": "cloud-seeding",
+      "account": {
+        "name": "Tricia M.",
+        "handle": "@tricia_m_utah",
+        "initials": "TM"
+      },
+      "time": "11h",
+      "text": "they’re spraying chemicals over our mountains and calling it “cloud seeding” ✈️💨 that’s why everyone’s sick this winter. WAKE UP",
+      "tell": "calling it “cloud seeding”",
+      "likes": 2054,
+      "shares": 1310,
+      "replies": 402,
+      "answer": "conspiracy",
+      "explanation": "This turns a public program into a cover story and pins unrelated problems on it. What evidence actually links the two?",
+      "fact": "Utah’s cloud seeding is a public, state-supported program that has used a 2% silver iodide solution to boost snowpack since the mid-1970s.",
+      "sources": [
+        {
+          "label": "Annual Cloud Seeding Report, Northern Utah Program, 2022-2023 Winter Season",
+          "publisher": "North American Weather Consultants, for the Utah Division of Water Resources and partners",
+          "year": 2023,
+          "url": "https://water.utah.gov/wp-content/uploads/2023/09/Northern-Utah-2022-23.pdf",
+          "status": "verified",
+          "check": "Checked 2026-11-01 (PDF). Generators use \"a 2% silver iodide solution\"; goal is \"to augment wintertime snowpack\"; \"operational programs in Utah since the mid-1970s\"; cost sharing from the Utah Division of Water Resources."
+        }
+      ]
+    },
+    {
+      "id": "logan-cold",
+      "topic": "weather",
+      "account": {
+        "name": "Grandpa Lyle",
+        "handle": "@lyle.in.logan",
+        "initials": "GL",
+        "relation": "Your grandpa"
+      },
+      "time": "2h",
+      "text": "-15 in Logan this morning. global warming my foot 🥶😂",
+      "tell": "-15 in Logan this morning",
+      "likes": 37,
+      "shares": 4,
+      "replies": 11,
+      "answer": "cherry-picking",
+      "explanation": "One frigid morning in one valley says nothing about the planet’s long-term average. That’s cherry picking with a thermometer.",
+      "fact": "NASA: human activities are driving the global warming trend observed since the mid-20th century.",
+      "sources": [
+        {
+          "label": "The Causes of Climate Change",
+          "publisher": "NASA Science",
+          "year": 2026,
+          "url": "https://science.nasa.gov/climate-change/causes/",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"Human activities are driving the global warming trend observed since the mid-20th century.\""
+        }
+      ],
+      "reply": {
+        "prompt": "Which reply is most likely to help Grandpa?",
+        "options": [
+          {
+            "text": "Ha, stay warm, Grandpa! Cold snaps still happen. Climate is the long-term average of the whole planet, and that’s rising.",
+            "points": 50,
+            "feedback": "Meets him where he is, then swaps one cold day for the long-term average.",
+            "reaction": "Ha! Fair enough, kiddo 🥶"
+          },
+          {
+            "text": "People always say a cold day disproves global warming, but that’s just not how it works.",
+            "points": 25,
+            "feedback": "Right idea, but it repeats the myth first and brushes him off.",
+            "reaction": "Mm-hm. We’ll see."
+          },
+          {
+            "text": "Weather and climate are different things. One day of weather says nothing about the long-term trend.",
+            "points": 25,
+            "feedback": "True, but it’s a textbook line with no warmth.",
+            "reaction": "Okay, professor."
+          },
+          {
+            "text": "Grandpa 😂 love you, but that’s literally the oldest myth in the book. Weather isn’t climate!",
+            "points": 0,
+            "feedback": "Affectionate, but it laughs at him. People defend ideas that get mocked.",
+            "reaction": "Well excuse me 😤"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gsl-dust",
+      "topic": "dust",
+      "account": {
+        "name": "Priya R.",
+        "handle": "@priyaruns_slc",
+        "initials": "PR"
+      },
+      "time": "5h",
+      "text": "U of U researchers found dust from the dried lakebed carries arsenic and other metals. one more reason to refill the lake 💧",
+      "graphic": {
+        "type": "link",
+        "outlet": "@theU · University of Utah",
+        "headline": "Just how dangerous is Great Salt Lake dust? New research looks for clues"
+      },
+      "tell": "U of U researchers found",
+      "tellNote": "Checkable source",
+      "likes": 702,
+      "shares": 310,
+      "replies": 48,
+      "answer": "legit",
+      "explanation": "Legit: it names who found it and doesn’t overstate it: metals in the dust, not mass poisoning.",
+      "fact": "Researchers found lakebed dust with arsenic above EPA residential soil screening levels. How much reaches neighborhoods is still being studied.",
+      "sources": [
+        {
+          "label": "Just how dangerous is Great Salt Lake dust? New research looks for clues",
+          "publisher": "University of Utah (@theU)",
+          "year": 2024,
+          "url": "https://attheu.utah.edu/research/just-how-dangerous-is-great-salt-lake-dust-new-research-looks-for-clues/",
+          "status": "verified",
+          "check": "Checked 2026-11-01. Lakebed dust had \"levels of arsenic and lithium that exceed the U.S. Environmental Protection Agency's soil residential\" screening levels (Atmospheric Environment, 2024; lab-aerosolized sediment samples)."
+        },
+        {
+          "label": "Projecting Impacts of Great Salt Lake Dust Exposure",
+          "publisher": "Utah Department of Environmental Quality",
+          "url": "https://deq.utah.gov/air-quality/great-salt-lake-dust",
+          "status": "verified",
+          "check": "Checked 2026-11-01. A modeling study of how dust from the dry lakebed reaches the Wasatch Front; \"Aeolian dust from the shrinking Great Salt Lake (GSL) is a major concern.\""
+        }
+      ]
+    },
+    {
+      "id": "smoke-aqi",
+      "topic": "smoke",
+      "account": {
+        "name": "Sam O.",
+        "handle": "@sam.runs.801",
+        "initials": "SO"
+      },
+      "time": "3h",
+      "text": "AQI 162 from the fires 🔥 AirNow says at this level even healthy people can feel it. skipping my run today",
+      "graphic": {
+        "type": "aqi",
+        "place": "Salt Lake City",
+        "value": "162",
+        "category": "Unhealthy",
+        "detail": "Wildfire smoke · PM2.5",
+        "time": "4:10 PM"
+      },
+      "tell": "AirNow says",
+      "tellNote": "Checkable source",
+      "likes": 156,
+      "shares": 40,
+      "replies": 12,
+      "answer": "legit",
+      "explanation": "Legit: it cites the official AQI scale and describes it accurately. Reasonable caution, not panic.",
+      "fact": "AirNow: at 151–200 (“Unhealthy”), some members of the general public may feel health effects; sensitive groups may feel worse.",
+      "sources": [
+        {
+          "label": "AQI Basics",
+          "publisher": "AirNow.gov (U.S. EPA)",
+          "url": "https://www.airnow.gov/aqi/aqi-basics/",
+          "status": "verified",
+          "check": "Checked 2026-11-01. Unhealthy (151 to 200): \"Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.\""
+        }
+      ]
+    },
+    {
+      "id": "china-excuse",
+      "topic": "air",
+      "account": {
+        "name": "Kade B.",
+        "handle": "@kadeb_ut",
+        "initials": "KB"
+      },
+      "time": "1d",
+      "text": "china emits WAY more than utah. nothing we do here matters so stop telling me to carpool 🙄",
+      "tell": "nothing we do here matters",
+      "likes": 1902,
+      "shares": 377,
+      "replies": 268,
+      "answer": "logical-fallacies",
+      "explanation": "A bigger problem somewhere else doesn’t make ours disappear. The smog in our valleys comes from what gets burned right here.",
+      "fact": "Utah DEQ: vehicles produce almost half the emissions that form PM2.5 during winter inversions.",
+      "sources": [
+        {
+          "label": "PM2.5 Moderate Area State Implementation Plans (2009-2014)",
+          "publisher": "Utah Department of Environmental Quality",
+          "url": "https://deq.utah.gov/air-quality/pm2-5-moderate-sips-2009-2014",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"Vehicles contribute almost half of the emissions that lead to the formation of PM2.5 during winter inversions.\""
+        },
+        {
+          "label": "Utah's Air Quality Challenges",
+          "publisher": "Utah Department of Government Operations",
+          "url": "https://govops.utah.gov/resource-stewardship/air-quality-issues/utahs-air-quality-challenges/",
+          "status": "verified",
+          "check": "Checked 2026-10-31. Mobile sources 48%, area sources 39%, point sources 13% \"of a typical inversion.\" (Mobile includes trains and aircraft, not just cars.)"
+        }
+      ]
+    },
+    {
+      "id": "refinery-cousin",
+      "topic": "inversion",
+      "account": {
+        "name": "Cousin Tyler",
+        "handle": "@tyler.does.stuff",
+        "initials": "CT",
+        "relation": "Your cousin"
+      },
+      "time": "6h",
+      "text": "i work at the refinery and trust me, inversions are just fog. the air’s fine lol 🌫️",
+      "tell": "i work at the refinery and trust me",
+      "likes": 48,
+      "shares": 3,
+      "replies": 14,
+      "answer": "fake-experts",
+      "explanation": "Working near a smokestack isn’t air-quality science. Fake experts lean on insider vibes instead of measurements.",
+      "fact": "Utah DEQ: during inversions, pollutants from vehicles, wood burning, area sources, and industry become trapped near the ground.",
+      "sources": [
+        {
+          "label": "Inversions",
+          "publisher": "Utah Department of Environmental Quality",
+          "url": "https://deq.utah.gov/daq/inversions",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"Cold air at the surface gets trapped under a layer of warmer air\"; \"Pollutants from vehicles, wood burning, area sources, and industry become trapped near the ground.\""
+        }
+      ],
+      "reply": {
+        "prompt": "Which reply is most likely to help Tyler?",
+        "options": [
+          {
+            "text": "You’d know the plant better than me! But that haze isn’t fog. DEQ measures it: cars, wood smoke, industry, trapped low.",
+            "points": 50,
+            "feedback": "Gives him credit, then swaps “fog” for what’s actually measured.",
+            "reaction": "Huh. What’s the DEQ thing?"
+          },
+          {
+            "text": "Lots of people think inversions are just fog, but that’s a myth. It’s pollution trapped under warm air.",
+            "points": 25,
+            "feedback": "Correct, but it repeats “just fog” and calls it a myth, which feels like a gotcha.",
+            "reaction": "It’s not a myth, I see it daily."
+          },
+          {
+            "text": "Utah DEQ lists vehicles, wood burning, area sources, and industry as what gets trapped in inversions.",
+            "points": 25,
+            "feedback": "Accurate and sourced, but it’s a citation, not a conversation.",
+            "reaction": "k"
+          },
+          {
+            "text": "No offense, Tyler, but working at a refinery doesn’t exactly make you an air quality expert 😅",
+            "points": 0,
+            "feedback": "Names the right issue, but the dig makes it personal. He’ll defend himself.",
+            "reaction": "Wow. Thanks, cuz. 🙄"
+          }
+        ]
+      }
+    },
+    {
+      "id": "inversion-climate",
+      "topic": "inversion",
+      "side": "alarmist",
+      "account": {
+        "name": "Sierra Vale 🌱",
+        "handle": "@sierra_for_clean_air",
+        "initials": "SV"
+      },
+      "time": "8h",
+      "text": "inversion season is 100% caused by climate change 😡 we did this. the air was never this bad before",
+      "tell": "100% caused by climate change",
+      "likes": 3120,
+      "shares": 990,
+      "replies": 207,
+      "answer": "logical-fallacies",
+      "explanation": "Caring doesn’t make a claim true. Inversions are cold air trapped under warm air in our valleys; the haze is our pollution.",
+      "fact": "Utah DEQ: in an inversion, cold air at the surface gets trapped under warmer air, and pollutants build up near the ground.",
+      "sources": [
+        {
+          "label": "Inversions",
+          "publisher": "Utah Department of Environmental Quality",
+          "url": "https://deq.utah.gov/daq/inversions",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"Cold air at the surface gets trapped under a layer of warmer air\"; \"Pollutants from vehicles, wood burning, area sources, and industry become trapped near the ground.\""
+        }
+      ]
+    }
+  ],
+  "ranks": [
+    {
+      "min": 90,
+      "label": "Good",
+      "color": "#00e400",
+      "blurb": "Clear skies over the Wasatch. You caught the tricks and trusted the legit posts."
+    },
+    {
+      "min": 75,
+      "label": "Moderate",
+      "color": "#ffff00",
+      "blurb": "Mostly clear. A trick or two slipped through. Check your blind spot below."
+    },
+    {
+      "min": 55,
+      "label": "Unhealthy for Sensitive Groups",
+      "color": "#ff7e00",
+      "blurb": "Some haze is hanging on. Review the tricks you missed, then try again."
+    },
+    {
+      "min": 35,
+      "label": "Unhealthy",
+      "color": "#ff0000",
+      "blurb": "The inversion is winning. Play again: the tricks get easier to see once you know them."
+    },
+    {
+      "min": 15,
+      "label": "Very Unhealthy",
+      "color": "#8f3f97",
+      "blurb": "Thick haze. Skim the five tricks on the start screen and give it another run."
+    },
+    {
+      "min": 0,
+      "label": "Hazardous",
+      "color": "#7e0023",
+      "blurb": "Socked in. Everyone starts here. One more round and you'll see the difference."
+    }
+  ],
+  "about": {
+    "credit": "Made by Jordan Heaton as a supplemental teaching module for PWS 180 at BYU. All accounts and people in the feed are fictional. Type: Archivo by Omnibus-Type (SIL Open Font License).",
+    "research": [
+      {
+        "label": "Neutralizing misinformation through inoculation: Exposing misleading argumentation techniques reduces their influence (Cook, Lewandowsky & Ecker), PLOS ONE 12(5): e0175799",
+        "publisher": "PLOS ONE",
+        "year": 2017,
+        "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0175799",
+        "status": "verified",
+        "check": "Checked 2026-10-31. Inoculating messages that \"explain the flawed argumentation technique\" were \"effective in neutralizing\" misinformation's effects."
+      },
+      {
+        "label": "A history of FLICC: the 5 techniques of science denial (John Cook)",
+        "publisher": "Skeptical Science",
+        "year": 2020,
+        "url": "https://skepticalscience.com/history-FLICC-5-techniques-science-denial.html",
+        "status": "verified",
+        "check": "Checked 2026-10-31. \"FLICC: Fake experts, Logical fallacies, Impossible expectations, Cherry picking, and Conspiracy theories.\""
+      },
+      {
+        "label": "The Debunking Handbook 2020 (Lewandowsky, Cook, Ecker, et al.)",
+        "publisher": "Skeptical Science / George Mason University",
+        "year": 2020,
+        "url": "https://sciencelearning.umd.edu/files/2020/10/DebunkingHandbook2020.pdf",
+        "status": "verified",
+        "check": "Checked 2026-10-31 (PDF). Recommends FACT, MYTH, FALLACY, FACT; stresses \"using inclusive language and avoiding the stigmatization\"; describes inoculation/\"prebunking.\" Official short link inside the PDF: https://sks.to/db2020"
+      },
+      {
+        "label": "Gamified inoculation interventions do not improve discrimination between true and fake news (Modirrousta-Galian & Higham), J. Exp. Psychology: General 152",
+        "publisher": "American Psychological Association",
+        "year": 2023,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36996156/",
+        "status": "TODO: VERIFY",
+        "check": "Confirm the finding that Bad News / Go Viral! mainly increased skeptical responses to all news rather than improving true-vs-fake discrimination. Search results agreed, but PubMed blocked the automated check."
+      },
+      {
+        "label": "Fake news game confers psychological resistance against online misinformation (Roozenbeek & van der Linden), Palgrave Communications 5, 65",
+        "publisher": "Palgrave Communications",
+        "year": 2019,
+        "url": "https://www.nature.com/articles/s41599-019-0279-9",
+        "status": "TODO: VERIFY",
+        "check": "Confirm citation details (the Bad News game study). nature.com redirected the automated check to a login page."
+      },
+      {
+        "label": "AQI Basics (category names used for the end-screen rating)",
+        "publisher": "AirNow.gov (U.S. EPA)",
+        "url": "https://www.airnow.gov/aqi/aqi-basics/",
+        "status": "verified",
+        "check": "Checked 2026-10-31. Good 0-50, Moderate 51-100, Unhealthy for Sensitive Groups 101-150, Unhealthy 151-200, Very Unhealthy 201-300, Hazardous 301 and higher."
+      }
+    ],
+    "photos": [
+      {
+        "title": "Inversion in Salt Lake City",
+        "author": "Derrellwilliams",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Inversion_in_Salt_Lake_City.jpg",
+        "use": "start screen"
+      },
+      {
+        "title": "Salt Lake City skyline (2020) from Ensign Peak",
+        "author": "Iansmh98",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Salt_Lake_City_skyline_(2020)_from_Ensign_Peak.jpg",
+        "use": "game background"
+      },
+      {
+        "title": "Alta Little Cottonwood Canyon",
+        "author": "Baileypalblue",
+        "license": "Public domain",
+        "url": "https://commons.wikimedia.org/wiki/File:Alta_Little_Cottonwood_Canyon.JPG",
+        "use": "post 2"
+      },
+      {
+        "title": "Salt Lake City smog haze skyline 01",
+        "author": "Eltiempo10",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Salt_Lake_City_smog_haze_skyline_01.jpg",
+        "use": "post 4"
+      },
+      {
+        "title": "Bonneville Shoreline Trail",
+        "author": "Michlaovic",
+        "license": "Public domain",
+        "url": "https://commons.wikimedia.org/wiki/File:Bonneville_Shoreline_Trail.jpg",
+        "use": "post 5"
+      },
+      {
+        "title": "June 2026 Wildfire Smoke in Salt Lake",
+        "author": "MagpierBrady",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:June_2026_Wildfire_Smoke_in_Salt_Lake.jpg",
+        "use": "post 6"
+      },
+      {
+        "title": "Great Salt Lake State Park 01",
+        "author": "Farragutful",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Great_Salt_Lake_State_Park_01.jpg",
+        "use": "post 7"
+      },
+      {
+        "title": "Rapidly Shrinking Great Salt Lake (MODIS 2022-06-16)",
+        "author": "MODIS Land Rapid Response Team, NASA GSFC",
+        "license": "Public domain",
+        "url": "https://commons.wikimedia.org/wiki/File:Rapidly_Shrinking_Great_Salt_Lake_(MODIS_2022-06-16).jpg",
+        "use": "post 8"
+      },
+      {
+        "title": "Wasatch Mountains (2730027527)",
+        "author": "Liji Jinaraj from San Francisco, USA",
+        "license": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Wasatch_Mountains_(2730027527).jpg",
+        "use": "avatar, post 1"
+      },
+      {
+        "title": "Alta Baldy Chutes",
+        "author": "Baileypalblue",
+        "license": "Public domain",
+        "url": "https://commons.wikimedia.org/wiki/File:Alta_Baldy_Chutes.JPG",
+        "use": "avatar, post 2"
+      },
+      {
+        "title": "Red Truck In The Snow (245604409)",
+        "author": "Daniel Ross",
+        "license": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "url": "https://commons.wikimedia.org/wiki/File:Red_Truck_In_The_Snow_(245604409).jpeg",
+        "use": "avatar, post 3"
+      },
+      {
+        "title": "A Golden Retriever-9 (Barras)",
+        "author": "Barras",
+        "license": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "url": "https://commons.wikimedia.org/wiki/File:A_Golden_Retriever-9_(Barras).JPG",
+        "use": "avatar, post 4"
+      },
+      {
+        "title": "Great Salt Lake UT1",
+        "author": "Acroterion",
+        "license": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Great_Salt_Lake_UT1.jpg",
+        "use": "avatar, post 5"
+      },
+      {
+        "title": "Bald Eagle Portrait (25879019903)",
+        "author": "Andy Morffew from Itchen Abbas, Hampshire, UK",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Bald_Eagle_Portrait_(25879019903).jpg",
+        "use": "avatar, post 6"
+      },
+      {
+        "title": "Calochortus nuttallii 302339098",
+        "author": "Darrin Gobble",
+        "license": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Calochortus_nuttallii_302339098.jpg",
+        "use": "avatar, post 7"
+      },
+      {
+        "title": "Blue Marble Western Hemisphere",
+        "author": "NASA images by Reto Stöckli, based on data from NASA and NOAA. Instrument: Terra - MODIS",
+        "license": "Public domain",
+        "url": "https://commons.wikimedia.org/wiki/File:Blue_Marble_Western_Hemisphere.jpg",
+        "use": "avatar, post 8"
+      }
+    ],
+    "photosNote": "All photos come from Wikimedia Commons and are used under their licenses. They were resized and converted to WebP; CC BY-SA images stay under CC BY-SA. A photo appearing in a fictional post doesn’t mean its photographer endorses anything said there."
+  }
+}
