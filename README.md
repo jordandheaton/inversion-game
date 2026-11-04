@@ -2,14 +2,14 @@
 
 A 5-minute browser game about spotting climate misinformation, set in Utah. Players scroll a fake social feed and name the trick each post uses: the five FLICC techniques (Fake experts, Logical fallacies, Impossible expectations, Cherry picking, Conspiracy theories), or "looks legit." The examples are the Great Salt Lake, snowpack, Wasatch Front inversions, wildfire smoke, cloud seeding, and Lake Bonneville.
 
-Each play draws 10 posts from a bank of 21, and two of those posts ask the player to pick the best of four replies to a relative who shared them. A round code in the URL (`?round=INVERSION`) gives a whole class the same posts.
+Each play draws 9 posts from a bank of 21. Three of them ask the player to pick the best of four replies to the relative, roommate, or classmate who shared the post. A round code in the URL (`?round=INVERSION`) gives a whole class the same posts.
 
 Built as a supplemental teaching module for BYU's PWS 180 (Climate Change: Science and Solutions). For learning objectives, a 15-minute lesson plan, discussion questions, and how to edit the content, see **[TEACHER_GUIDE.md](TEACHER_GUIDE.md)**.
 
 The feed lives in a fictional local app called "basin," shown over a real photo of the Salt Lake Valley. A brown inversion layer over the valley lifts as the player scores, and the game ends with an air-quality report.
 
 - Static site: HTML, CSS, and vanilla JavaScript. No build step, no dependencies, no backend. About 1.3 MB of images and fonts, all self-hosted.
-- No login, cookies, analytics, or saved data.
+- No login, cookies, or saved data, and answers are never sent anywhere. The game's code has no analytics. On the live site, Cloudflare (which serves the domain) adds its Web Analytics page-visit counter.
 - Works on phones, and with keyboard only.
 
 ## Files

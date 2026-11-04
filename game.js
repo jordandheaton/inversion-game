@@ -33,6 +33,7 @@
   const TELL_FIELDS = ['quote', 'attribution', 'headline', 'outlet', 'caption', 'detail'];
   const SIDES = ['alarmist'];
   const CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const COUNT_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
 
   // Review mode flags copy over these lengths and estimates play time, so edits keep a round near 5 minutes.
   const MAX_EXPLANATION_WORDS = 30;
@@ -283,7 +284,7 @@
     if (c.scoring !== undefined) {
       if (!isObj(c.scoring)) errors.push('scoring must be an object.');
       else {
-        for (const key of ['techniquePoints', 'replyPoints']) {
+        for (const key of ['techniquePoints', 'alsoFairPoints', 'replyPoints']) {
           if (c.scoring[key] !== undefined && !(isNum(c.scoring[key]) && c.scoring[key] >= 0)) {
             errors.push(`scoring.${key} must be a number 0 or higher.`);
           }
@@ -369,6 +370,7 @@
           } else {
             const missing = GRAPHIC_FIELDS[g.type].filter(k => !isText(g[k]));
             if (missing.length) errors.push(`${where} "${g.type}" graphic is missing: ${missing.join(', ')}.`);
+            if (g.mark !== undefined && !(isText(g.mark) && g.mark.length <= 2)) errors.push(`${where} graphic "mark" must be 1 or 2 characters, like "U".`);
           }
         }
         if (p.tell !== undefined) {
@@ -376,6 +378,15 @@
           else if (isText(p.text) && !tellField(p)) {
             errors.push(`${where} "tell" ("${p.tell}") doesn't appear word-for-word in the post text or its graphic. Copy it exactly, including punctuation.`);
           }
+        }
+        if (p.alsoFair !== undefined) {
+          if (!Array.isArray(p.alsoFair)) errors.push(`${where} "alsoFair" must be a list like [{ "answer": "logical-fallacies", "note": "..." }].`);
+          else p.alsoFair.forEach((f, k) => {
+            if (!isObj(f) || !techIds.has(f.answer) || f.answer === p.answer) {
+              errors.push(`${where} alsoFair[${k}] needs an "answer": a technique id other than the post's own answer.`);
+            }
+            if (!isObj(f) || !isText(f.note)) errors.push(`${where} alsoFair[${k}] needs a "note" saying why it's fair and what the main trick is.`);
+          });
         }
         checkSources(p.sources, where);
 
@@ -421,6 +432,7 @@
         if (!isObj(r)) return errors.push(`${where} must be an object.`);
         if (!isNum(r.min) || r.min < 0 || r.min > 100) errors.push(`${where} "min" must be a percent from 0 to 100.`);
         if (!isText(r.label)) errors.push(`${where} is missing a "label".`);
+        if (r.short !== undefined && !isText(r.short)) errors.push(`${where} "short" must be text: a shorter label for the in-game meter.`);
         if (r.color !== undefined && !/^#[0-9a-f]{6}$/i.test(r.color)) errors.push(`${where} "color" must look like "#00e400".`);
       });
       if (!c.ranks.some(r => r && r.min === 0)) errors.push('ranks needs one entry with "min": 0 so every score gets a rating.');
@@ -534,6 +546,7 @@
     const s = content.scoring || {};
     return {
       technique: s.techniquePoints ?? 100,
+      alsoFair: s.alsoFairPoints ?? 50,
       reply: s.replyPoints ?? 50,
     };
   }
@@ -591,17 +604,18 @@
     const rank = rankFor(state.score);
     const color = rank.color || '#dddddd';
     const set = (key, value) => document.querySelectorAll(`[data-hud="${key}"]`).forEach(el => { el.textContent = value; });
-    set('level', rank.label);
+    set('level', rank.short || rank.label);
     set('progress', `Post ${Math.min(state.index + 1, total)} of ${total}`);
     set('score', `${state.score} pts`);
     document.querySelectorAll('.round-progress').forEach(bar => {
       bar.setAttribute('aria-valuenow', state.answers.length);
       bar.querySelectorAll('[data-step]').forEach((step, i) => {
-        step.dataset.state = state.answers[i] ? (state.answers[i].correct ? 'right' : 'wrong') : i === state.index ? 'current' : 'waiting';
+        const a = state.answers[i];
+        step.dataset.state = a ? (a.correct ? 'right' : a.partial ? 'partial' : 'wrong') : i === state.index ? 'current' : 'waiting';
       });
     });
     document.querySelectorAll('[data-hud="chip"]').forEach(el => {
-      el.textContent = rank.label;
+      el.textContent = rank.short || rank.label;
       el.style.background = color;
       el.style.color = textColorOn(color);
     });
@@ -679,9 +693,11 @@
         g.note ? h('p', { class: 'g-forecast-note', 'aria-hidden': 'true' }, g.note) : null);
     }
     if (g.type === 'link') {
+      // The band shows the outlet's initial, like a site icon, unless content.json gives a "mark".
+      const mark = g.mark || (g.outlet.replace(/^the\s+/i, '').match(/[\p{L}\p{N}]/u) || [''])[0].toUpperCase();
       return h('div', { class: 'graphic g-link', role: 'img', 'aria-label': `Shared article from ${g.outlet}: ${g.headline}` },
         h('div', { class: 'g-link-band', 'aria-hidden': 'true' },
-          h('span', { class: 'g-link-mark' }, g.outlet.replace(/^the\s+/i, '').charAt(0).toUpperCase())),
+          h('span', { class: 'g-link-mark' }, mark)),
         h('div', { class: 'g-link-body', 'aria-hidden': 'true' },
           h('p', { class: 'g-link-outlet' }, txt(g.outlet)),
           h('p', { class: 'g-link-headline' }, txt(g.headline)),
@@ -803,6 +819,9 @@
     const classCode = urlRoundCode();
     const cfg = roundConfig(content);
     const roundSize = cfg ? cfg.size : content.posts.length;
+    const replySteps = cfg ? cfg.replies : content.posts.filter(p => p.reply).length;
+    const replyNote = replySteps === 1 ? ' One post also asks you to choose a helpful reply.'
+      : replySteps > 1 ? ` ${COUNT_WORDS[replySteps] || replySteps} posts also ask you to choose a helpful reply.` : '';
     const title = h('h1', { class: 'cover-title', tabindex: '-1' }, 'See through', h('span', {}, 'the noise.'));
     screen('intro', h('div', { class: 'cover' },
       h('header', { class: 'cover-header' }, wordmark(),
@@ -827,7 +846,7 @@
           h('span', { class: 'trick-text' }, h('strong', {}, t.name), h('span', {}, t.hint))))),
         techById[LEGIT_ID] ? h('p', { class: 'cover-note' }, icon('check'),
           h('span', {}, h('strong', {}, 'Some posts are legit. '), 'Skepticism means checking, not rejecting everything.')) : null,
-        h('p', { class: 'cover-scoring' }, 'Each correct answer earns points and lifts the haze. Two posts also ask you to choose a helpful reply.')),
+        h('p', { class: 'cover-scoring' }, `Each correct answer earns points and lifts the haze.${replyNote}`)),
       h('footer', { class: 'cover-footer' },
         h('p', { class: 'fine' },
           meta.privacy ? `${meta.privacy} ` : '',
@@ -895,13 +914,21 @@
     const article = postCard(post, n);
     article.append(h('section', { class: 'sheet', 'aria-labelledby': `sheet-${n}` },
       h('h3', { class: 'sheet-title', id: `sheet-${n}` }, "What's the trick?"),
-      h('p', { class: 'sheet-help' }, 'Some posts are accurate. Look at the reasoning.', h('span', { class: 'key-tip' }, ` Keys 1–${content.techniques.length} work too.`)),
+      h('p', { class: 'sheet-help' }, 'Some posts are accurate. Look at the reasoning.', h('span', { class: 'key-tip' }, ` Keys 1–${content.techniques.length} pick; Enter moves on.`)),
       h('div', { class: 'choices', role: 'group', 'aria-labelledby': `sheet-${n}` },
         content.techniques.map((t, i) => choiceButton(i, t.name, t.hint, techIcon(t), t.id === LEGIT_ID, () => answerPost(t.id))))));
     document.getElementById('feed').replaceChildren(article);
     updateHud();
-    if (n > 1) document.querySelector('.appbar').scrollIntoView({ block: 'start', behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+    if (n > 1) scrollPostIntoView(article);
     focusOn(article.querySelector('h2'));
+  }
+
+  // Puts the post's top edge just below the sticky app bar. (Scrolling the bar itself does nothing
+  // once it's stuck, which left the author and text hidden under it.)
+  function scrollPostIntoView(article) {
+    const bar = document.querySelector('.appbar');
+    const top = article.getBoundingClientRect().top + window.scrollY - (bar ? bar.offsetHeight : 0);
+    window.scrollTo({ top: Math.max(0, top), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
   }
 
   function revealTell(post, article) {
@@ -916,15 +943,18 @@
     const group = article.querySelector('.sheet .choices');
     if (!group || group.classList.contains('is-locked')) return;
     const correct = pickedId === post.answer;
-    const earned = correct ? points().technique : 0;
+    // A defensible second reading ("alsoFair") earns partial credit and a note naming the main trick.
+    const fair = correct ? null : (post.alsoFair || []).find(f => f.answer === pickedId);
+    const earned = correct ? points().technique : fair ? points().alsoFair : 0;
+    const kind = correct ? 'right' : fair ? 'partial' : 'wrong';
     state.score += earned;
-    state.answers.push({ postId: post.id, answer: post.answer, picked: pickedId, correct, replyPoints: null, replyBest: null });
+    state.answers.push({ postId: post.id, answer: post.answer, picked: pickedId, correct, partial: !!fair, replyPoints: null, replyBest: null });
 
     lockChoices(group);
     group.querySelectorAll('button').forEach((button, i) => {
       const id = content.techniques[i].id;
       if (id === post.answer) markChoice(button, 'right', correct ? 'your answer, correct' : 'correct answer');
-      else if (id === pickedId) markChoice(button, 'wrong', 'your answer');
+      else if (id === pickedId) markChoice(button, kind, fair ? 'your answer, partly right' : 'your answer');
     });
     revealTell(post, article);
     article.classList.add(correct ? 'answered-right' : 'answered-wrong');
@@ -932,18 +962,24 @@
 
     const tech = techById[post.answer];
     const n = state.index + 1;
-    const outcome = h('h3', { class: 'note-status-title', id: `note-${n}`, tabindex: '-1' }, correct ? 'Correct!' : 'Not quite');
+    const outcome = h('h3', { class: 'note-status-title', id: `note-${n}`, tabindex: '-1' }, { right: 'Correct!', partial: 'Partly right', wrong: 'Not quite' }[kind]);
     const verdict = h('h4', { class: 'note-verdict' },
       h('span', { class: `choice-icon ${post.answer === LEGIT_ID ? 'is-legit' : ''}` }, icon(techIcon(tech))),
       tech.name);
-    article.querySelector('.sheet').replaceWith(h('section', { class: `note ${correct ? 'is-right' : 'is-wrong'}`, 'aria-labelledby': `note-${n}` },
+    const result = {
+      right: post.answer === LEGIT_ID ? 'You checked the facts.' : 'You spotted the trick.',
+      partial: 'Fair read, but there’s a bigger trick.',
+      wrong: 'Here’s what to look for.',
+    }[kind];
+    article.querySelector('.sheet').replaceWith(h('section', { class: `note is-${kind}`, 'aria-labelledby': `note-${n}` },
       h('div', { class: 'note-head' },
-        h('span', { class: 'outcome-icon', 'aria-hidden': 'true' }, icon(correct ? 'tick' : 'cross')),
-        h('div', {}, outcome, h('p', { class: 'note-result' }, correct ? (post.answer === LEGIT_ID ? 'You checked the facts.' : 'You spotted the trick.') : 'Here’s what to look for.')),
-        h('span', { class: 'note-points' }, correct ? `+${earned} points` : '0 points')),
+        h('span', { class: 'outcome-icon', 'aria-hidden': 'true' }, icon(kind === 'wrong' ? 'cross' : 'tick')),
+        h('div', {}, outcome, h('p', { class: 'note-result' }, result)),
+        h('span', { class: 'note-points' }, earned ? `+${earned} points` : '0 points')),
       h('div', { class: 'note-body' },
         verdict,
-        correct ? null : h('p', { class: 'note-picked' }, `You picked ${techById[pickedId].name}.`),
+        fair ? h('p', {}, h('strong', {}, `${techById[pickedId].name} is fair. `), fair.note)
+          : correct ? null : h('p', { class: 'note-picked' }, `You picked ${techById[pickedId].name}.`),
         post.tell ? h('p', { class: 'note-tell' }, h('span', { class: 'label' }, post.answer === LEGIT_ID ? 'Good sign' : 'The tell'), ` “${post.tell}”`) : null,
         h('p', {}, post.explanation),
         h('div', { class: 'note-facts' }, h('span', { class: 'label' }, 'The facts'), h('p', {}, post.fact)),
@@ -951,7 +987,7 @@
         h('button', { class: 'btn btn-primary btn-block', type: 'button', onclick: post.reply ? openComposer : nextPost },
           post.reply ? `Reply to ${post.account.name}` : nextLabel(), icon('arrow')))));
     focusOn(outcome, true);
-    announce(`${correct ? `Correct, plus ${earned} points.` : 'Not quite.'} Air quality: ${rankFor(state.score).label}.`);
+    announce(`${{ right: 'Correct', partial: 'Partly right', wrong: 'Not quite' }[kind]}${earned ? `, plus ${earned} points` : ''}. Air quality: ${rankFor(state.score).label}.`);
   }
 
   function openComposer() {
@@ -1092,6 +1128,10 @@
         h('p', { class: 'blind-spot' }, blind
           ? [h('strong', {}, `Blind spot: ${blind.tech.name}. `), `${blind.tech.hint}.`]
           : h('strong', {}, 'No blind spots this round. Clear skies.')),
+        missesReview(),
+        content.meta.takeaway ? h('div', { class: 'takeaway' },
+          h('h2', { class: 'label' }, 'One thing to keep'),
+          h('p', {}, content.meta.takeaway)) : null,
         h('div', { class: 'report-actions' },
           h('button', { class: 'btn btn-primary', type: 'button', onclick: playNewRound }, 'Play a new round'),
           h('button', { class: 'btn btn-quiet', type: 'button', onclick: () => shareResult(rank, status) }, icon('share'), 'Share'),
@@ -1104,6 +1144,22 @@
     ));
     focusOn(heading);
     announce(`Finished. Your feed's air quality: ${rank.label}. ${state.score} of ${max} points.`);
+  }
+
+  // Each post the player didn't fully get: the post, the right answer, the clue, and why.
+  function missesReview() {
+    const misses = state.answers.map((a, i) => ({ a, post: state.posts[i] })).filter(m => !m.a.correct);
+    return h('section', { class: 'misses', 'aria-labelledby': 'misses-title' },
+      h('h2', { class: 'label', id: 'misses-title' }, misses.length ? `Review your misses (${misses.length})` : 'Review your misses'),
+      misses.length
+        ? h('ol', { class: 'miss-list' }, misses.map(({ a, post }) => h('li', { class: `miss ${a.partial ? 'is-partial' : ''}` },
+          h('p', { class: 'miss-who' }, avatarFor(post.account, 28), h('strong', {}, post.account.name)),
+          h('p', { class: 'miss-text' }, post.text),
+          h('p', { class: 'miss-answer' }, `Answer: ${techById[post.answer].name}`,
+            h('span', {}, ` · you picked ${techById[a.picked].name}${a.partial ? ' (partly right)' : ''}`)),
+          post.tell ? h('p', { class: 'miss-clue' }, h('span', { class: 'label' }, post.answer === LEGIT_ID ? 'Good sign' : 'The clue'), ` “${post.tell}”`) : null,
+          h('p', { class: 'miss-why' }, post.explanation))))
+        : h('p', { class: 'miss-none' }, 'Nothing to review: you named every post correctly.'));
   }
 
   // A new round drops any ?round= code from the address so the next draw is fresh.
@@ -1209,6 +1265,7 @@
             h('td', {}, h('strong', {}, p.id), h('br'), p.account.name,
               p.topic ? [h('br'), `Topic: ${p.topic}${p.side ? ` · ${p.side}` : ''}`] : null,
               p.tell ? [h('br'), h('span', { class: 'tell-cell' }, `Tell: "${p.tell}"`)] : null,
+              p.alsoFair ? [h('br'), `Also fair: ${p.alsoFair.map(f => techById[f.answer].name).join(', ')}`] : null,
               p.image ? [h('br'), `Photo: ${p.image.src}`] : p.graphic ? [h('br'), `Graphic: ${p.graphic.type}`] : null,
               p.reply ? [h('br'), h('span', { class: 'status-badge' }, `reply step · ${p.reply.options.length} drafts`)] : null),
             h('td', {}, techById[p.answer].name),
@@ -1238,6 +1295,17 @@
 
   document.addEventListener('keydown', event => {
     if (event.altKey || event.ctrlKey || event.metaKey || event.repeat) return;
+    if (event.key === 'Enter') {
+      // Enter continues after an answer, unless focus is on a control Enter already activates.
+      if (document.activeElement && document.activeElement.closest('button, a, summary, input, select, textarea')) return;
+      const continues = root.querySelectorAll('.note .btn-primary');
+      const next = continues[continues.length - 1];
+      if (next) {
+        event.preventDefault();
+        next.click();
+      }
+      return;
+    }
     const n = Number(event.key);
     if (!Number.isInteger(n) || n < 1) return;
     const group = root.querySelector('.choices:not(.is-locked)');

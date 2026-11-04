@@ -1447,3 +1447,21 @@ body[data-screen="page"] .page { padding-top: max(24px, 6vh); }
     scroll-behavior: auto !important;
   }
 }
+
+/* Partial credit in the progress bar, and the end screen's review of misses and closing takeaway. */
+.round-progress > [data-state="partial"] { background: var(--partial-mark); }
+.misses { margin-top: 22px; }
+.miss-list { display: grid; gap: 10px; margin: 10px 0 0; padding: 0; list-style: none; }
+.miss { min-width: 0; padding: 14px 16px; border-left: 3px solid var(--wrong); border-radius: 8px; background: var(--snow); }
+.miss.is-partial { border-left-color: var(--partial-mark); }
+.miss-who { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; }
+.miss-who .avatar { flex: none; }
+.miss-text { margin-top: 8px; font-family: var(--font-ui); font-size: 0.875rem; line-height: 1.5; overflow-wrap: anywhere; }
+.miss-answer { margin-top: 10px; font-size: 0.8125rem; font-weight: 700; }
+.miss-answer span { font-weight: 400; color: var(--muted); }
+.miss-clue { margin-top: 6px; font-size: 0.8125rem; overflow-wrap: anywhere; }
+.miss-clue .label { margin-right: 4px; }
+.miss-why { margin-top: 6px; font-size: 0.8125rem; line-height: 1.55; color: var(--ink-2); }
+.miss-none { margin-top: 8px; font-size: 0.875rem; }
+.takeaway { margin-top: 22px; padding: 16px 18px; border-radius: 8px; background: var(--right-tint); }
+.takeaway p { margin-top: 6px; font-size: 0.9375rem; line-height: 1.55; font-weight: 600; }
