@@ -305,6 +305,7 @@
         else techIds.add(t.id);
         if (!isText(t.name)) errors.push(`${where} ("${t.id}") is missing a "name".`);
         if (!isText(t.hint)) errors.push(`${where} ("${t.id}") is missing a "hint".`);
+        if (t.notThis !== undefined && !isText(t.notThis)) errors.push(`${where} ("${t.id}") "notThis" must be text: what this trick needs, shown when it's picked wrongly.`);
         if (t.icon !== undefined && !ICON_NAMES.includes(t.icon)) {
           errors.push(`${where} ("${t.id}") "icon" must be one of: ${ICON_NAMES.join(', ')}.`);
         }
@@ -386,6 +387,13 @@
               errors.push(`${where} alsoFair[${k}] needs an "answer": a technique id other than the post's own answer.`);
             }
             if (!isObj(f) || !isText(f.note)) errors.push(`${where} alsoFair[${k}] needs a "note" saying why it's fair and what the main trick is.`);
+          });
+        }
+        if (p.whyNot !== undefined) {
+          if (!isObj(p.whyNot)) errors.push(`${where} "whyNot" must look like { "logical-fallacies": "Why that pick isn't it." }.`);
+          else Object.entries(p.whyNot).forEach(([id, text]) => {
+            if (!techIds.has(id) || id === p.answer) errors.push(`${where} whyNot "${id}" must be a technique id other than the post's own answer.`);
+            if (!isText(text)) errors.push(`${where} whyNot "${id}" must be text.`);
           });
         }
         checkSources(p.sources, where);
@@ -931,6 +939,11 @@
     window.scrollTo({ top: Math.max(0, top), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
   }
 
+  // Why the player's wrong pick isn't it: the post's own line for that pick, else what that trick needs.
+  function whyNot(post, pickedId) {
+    return (post.whyNot && post.whyNot[pickedId]) || techById[pickedId].notThis || '';
+  }
+
   function revealTell(post, article) {
     const where = tellField(post);
     if (where === 'text') article.querySelector('.post-text').replaceChildren(...richText(post.text, post, true));
@@ -979,7 +992,7 @@
       h('div', { class: 'note-body' },
         verdict,
         fair ? h('p', {}, h('strong', {}, `${techById[pickedId].name} is fair. `), fair.note)
-          : correct ? null : h('p', { class: 'note-picked' }, `You picked ${techById[pickedId].name}.`),
+          : correct ? null : h('p', { class: 'note-picked' }, `You picked ${techById[pickedId].name}. `, whyNot(post, pickedId)),
         post.tell ? h('p', { class: 'note-tell' }, h('span', { class: 'label' }, post.answer === LEGIT_ID ? 'Good sign' : 'The tell'), ` “${post.tell}”`) : null,
         h('p', {}, post.explanation),
         h('div', { class: 'note-facts' }, h('span', { class: 'label' }, 'The facts'), h('p', {}, post.fact)),
@@ -1157,6 +1170,7 @@
           h('p', { class: 'miss-text' }, post.text),
           h('p', { class: 'miss-answer' }, `Answer: ${techById[post.answer].name}`,
             h('span', {}, ` · you picked ${techById[a.picked].name}${a.partial ? ' (partly right)' : ''}`)),
+          a.partial ? null : h('p', { class: 'miss-why' }, whyNot(post, a.picked)),
           post.tell ? h('p', { class: 'miss-clue' }, h('span', { class: 'label' }, post.answer === LEGIT_ID ? 'Good sign' : 'The clue'), ` “${post.tell}”`) : null,
           h('p', { class: 'miss-why' }, post.explanation))))
         : h('p', { class: 'miss-none' }, 'Nothing to review: you named every post correctly.'));

@@ -14,7 +14,7 @@ The game uses **inoculation**: showing people a weakened dose of a misleading te
 John Cook's *Cranky Uncle* uses the same idea. Inversion differs in three ways:
 
 1. **Everything is local.** Students see the Great Salt Lake, Utah snowpack, Wasatch Front inversions, wildfire smoke, cloud seeding, and Lake Bonneville. Several sources are Utah agencies, and one is Prof. Abbott's own 2023 Great Salt Lake report.
-2. **Discernment, not cynicism.** Every round has two accurate posts and at least one misleading post that *exaggerates* the problem (for example, "the lake is dying ONLY because of climate change"). A reanalysis of earlier inoculation games found they mostly made players doubt *all* news rather than sort true from false (Modirrousta-Galian & Higham, 2023; TODO: VERIFY). Accurate posts make players tell the difference.
+2. **Discernment, not cynicism.** Every round has two accurate posts and at least one misleading post that *exaggerates* the problem (for example, "the lake is dying ONLY because of climate change"). A reanalysis of earlier inoculation games found they mostly made players doubt *all* news rather than sort true from false (Modirrousta-Galian & Higham, 2023; TODO: VERIFY). Accurate posts make players tell the difference. "Has a source" isn't a shortcut either: some misleading posts cite a real source and stretch it (Pete's snowpack record, Kai's NASA photo), and one accurate post names no source at all (Sam's air-quality post).
 3. **Kind corrections.** On three posts per round, shared by a relative, roommate, or classmate, students choose how to reply from four believable drafts. Only one does everything well: it leads with what's true, explains the trick, and stays kind, following *The Debunking Handbook 2020*. Every set also has a warm, friendly draft that agrees with the myth, so "pick the nicest one" doesn't work. This ties to the course's Community and Belonging outcome: "We are not trying to win arguments but to win the future."
 
 **What students see:**
@@ -26,7 +26,7 @@ John Cook's *Cranky Uncle* uses the same idea. Inversion differs in three ways:
   - a blue check on a fake expert's account
   - like and repost counts
 - **A "What's the trick?" sheet** under every post.
-- **A feedback note** after each answer. It **highlights the exact giveaway words** (the "tell") in the post or its graphic, then gives the real data with source links.
+- **A feedback note** after each answer. It **highlights the exact giveaway words** (the "tell") in the post or its graphic, then gives the real data with source links. After a wrong answer, it also says **why the student's pick wasn't it** (for example, Brody's post demands perfection from *people*, which is a false choice, not an Impossible Expectation of the science).
 - **Half credit for a defensible second reading.** A couple of posts can fairly be read two ways. For example, the Sundance forecast post is also a false analogy. Picking the second reading earns half credit and a note that names the main trick.
 - **Reply steps that work like texting someone you know.** The student picks one of four drafts, sends it, and sees how the person reacts. Good-but-flawed drafts earn partial credit.
 - **An air-quality report at the end** (EPA AQI category names, Good to Hazardous). It shows badges for each technique and the student's blind spot. Then comes **"Review your misses,"** listing each missed post with the right answer, the clue, and why. It ends on one takeaway: reply warm, plus one fact.
@@ -85,7 +85,7 @@ These refer to posts by account, so they work with the `INVERSION` class round. 
 4. **Uncle Gary's Lake Bonneville post** starts with something true. Why are half-true claims harder to correct than flatly false ones?
 5. **Brody's post** says you can't care about climate if you own a car and a phone. How does this connect to the course's "greatest false choice" between personal action and systemic change?
 6. In the reply steps, several drafts earned only partial credit: one repeated the myth first, one was correct but cold, and one was friendly but quietly agreed with the myth. When has someone actually changed your mind? What did they do?
-7. **The accurate posts** named sources you could check. How did you decide to trust them? What's the risk of a game that teaches people to distrust everything?
+7. **Sources:** Kai cites NASA and still misleads; Maya and Priya cite sources and are accurate. (Other rounds include Pete, who cites a real state agency and misleads, and Sam, who cites nothing and is accurate.) Besides "is there a source?", what should you check? What's the risk of a game that teaches people to distrust everything?
 8. The syllabus says, "We are not trying to win arguments but to win the future." What would that look like in a comment section?
 9. After each answer, the game highlights the "tell": the exact words that give the trick away. Which tell would you be most likely to miss in your own feed?
 10. **The Sundance forecast post** can fairly be called a false analogy *and* an impossible expectation. Which trick is doing the most work in it? Why does naming the main one help when you reply?
@@ -97,7 +97,7 @@ These refer to posts by account, so they work with the `INVERSION` class round. 
 - **Rating:** the total out of 1,050 maps to an air-quality category: Good (80%+), Moderate (60%+), Unhealthy for Sensitive Groups (45%+), Unhealthy (30%+), Very Unhealthy (15%+), and Hazardous below that. One missed post with decent replies still rates Good.
 - **End screen:** results by technique, the student's "blind spot" (the technique they missed most often), a "Review your misses" list, and a closing takeaway.
 
-"Logical Fallacy" shows up most in the bank (6 posts) because it's the broadest category. It covers oversimplifying to one cause, "it happened naturally before," "someone else is worse, so nothing matters," and attacking the messenger.
+"Logical Fallacy" shows up most in the bank (6 posts) because it's the broadest category. Every trick is bad reasoning, so the game treats Logical Fallacy as the category for broken logic the other four don't name: one cause for everything, a false choice, "it happened naturally before," "someone else is worse, so nothing matters," and attacking the messenger. Impossible Expectations is limited to demanding *certainty from the science*. When a student picks a defensible-but-broader answer, the feedback note explains why the more specific trick fits.
 
 ## Accessibility and privacy
 
@@ -161,7 +161,8 @@ The `"posts"` list is the bank; rounds draw from it. To add a post, copy this te
 | `explanation` | Shown after answering. Aim for 30 words or fewer. |
 | `fact` | The "The facts:" line. Aim for 25 words or fewer. |
 | `sources` | At least one. `status` must be exactly `"verified"` or `"TODO: VERIFY"`. `url` is optional (the syllabus source has none). |
-| `tell` | Optional but recommended. The exact words that give the trick away, copied word-for-word from the post `text` or its graphic. They get highlighted after the student answers. On legit posts, mark the good sign instead (for example, the named source). `tellNote` optionally changes the little label. |
+| `tell` | Optional but recommended. The exact words that give the trick away, copied word-for-word from the post `text` or its graphic. They get highlighted after the student answers. On legit posts, mark the good sign instead (for example, the named source, or a claim that matches the data). `tellNote` optionally changes the little label. |
+| `whyNot` | Optional. What to tell a student who picked a specific wrong answer: `{ "logical-fallacies": "Every trick is bad reasoning. This one demands an exact date, so it's Impossible Expectations." }`. Write one for each likely confusion. For other wrong picks, the game shows that technique's `notThis` line ("Conspiracy Theory needs a secret plot or a hidden “they.”"). |
 | `account.avatar` | Optional. A profile photo, like `"assets/avatars/lake.webp"`. Leave it out for a letter avatar. **Never use a photo of a real person.** Use places, animals, or objects. |
 | `account.verified` | Optional. `true` shows a blue check (the fake-expert account uses this to make the point that a badge isn't expertise). |
 | `image` | Optional. A photo in the post: `{ "src": "assets/photos/name.webp", "alt": "What the photo shows", "credit": "Photo: Author, CC BY 4.0" }`. `alt` is required. |
@@ -184,7 +185,7 @@ Give each reply step four drafts that all sound reasonable:
 - **25 points:** flawed. For example, it repeats the myth first, it's correct but cold, or it's warm and friendly but agrees with the myth.
 - **0 points:** sounds polite but talks down to the person.
 
-Include at least one warm-sounding draft that's wrong, so students can't win by picking the nicest one. Keep drafts about the same length (around 15 words). Exactly one draft must have the top score. The game shuffles draft order each round.
+Include at least one warm-sounding draft that's wrong, so students can't win by picking the nicest one. Keep drafts about the same length (around 15 words), and don't make the best one the longest. Don't reuse wording from the post's explanation or fact in the best draft: students read that card just before replying, so an echoed phrase gives the answer away. If you want an echo, put it in a 25-point draft. Exactly one draft must have the top score. The game shuffles draft order each round.
 
 ### Adding a photo
 
@@ -203,7 +204,7 @@ Include at least one warm-sounding draft that's wrong, so students can't win by 
   - `maxPerTopic`: most posts allowed on one topic
 
   Delete the whole `"round"` block to play every post in file order instead.
-- **Technique names and hints** live in `"techniques"`. Change `name`, `hint`, or `definition` freely. Keep the `id`s, since posts point to them. `icon` picks the symbol: `cap`, `chain`, `infinity`, `cherry`, `pins`, or `check`.
+- **Technique names and hints** live in `"techniques"`. Change `name`, `hint`, `definition`, or `notThis` (what the trick needs, shown when a student picks it wrongly) freely. Keep the `id`s, since posts point to them. `icon` picks the symbol: `cap`, `chain`, `infinity`, `cherry`, `pins`, or `check`.
 - **Points** live in `"scoring"` (`techniquePoints`, `alsoFairPoints`, `replyPoints`).
 - **Air-quality ratings** live in `"ranks"`. `min` is the percentage of the maximum score needed. Keep one rank with `"min": 0`. An optional `short` label is used on the in-game meter when the full name is long (Unhealthy for Sensitive Groups shows as "Unhealthy (sensitive)").
 - **Intro text, the privacy line, and the end screen's takeaway** live in `"meta"` (`intro`, `privacy`, `takeaway`).

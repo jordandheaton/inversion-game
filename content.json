@@ -2,11 +2,11 @@
   "meta": {
     "title": "Inversion",
     "subtitle": "Clear the air on climate misinformation",
-    "version": "2.1",
-    "lastReviewed": "2026-11-04",
+    "version": "2.2",
+    "lastReviewed": "2026-11-11",
     "author": "Jordan Heaton",
     "course": "PWS 180: Climate Change: Science and Solutions (BYU)",
-    "intro": "Each post is either legit or uses a classic misinformation trick. Name the trick to clear the air.",
+    "intro": "Each post is legit or uses a classic misinformation trick. Name the trick to clear the air.",
     "privacy": "No login. Your answers aren’t saved or sent anywhere (the site’s host does count page visits).",
     "takeaway": "Reply warm, plus one fact: start with something you agree on, give the fact, name the trick, and keep it kind."
   },
@@ -26,44 +26,50 @@
     {
       "id": "fake-experts",
       "name": "Fake Experts",
-      "hint": "Wrong-field credentials, or a few voices dressed up as \"the experts\"",
+      "hint": "Wrong-field credentials, or a crowd of names posing as experts",
       "definition": "Presenting someone as an authority when their expertise isn't in climate science, or making a tiny minority look like a real scientific debate.",
-      "icon": "cap"
+      "icon": "cap",
+      "notThis": "Fake Experts needs someone’s credentials, or a crowd of names, standing in for evidence."
     },
     {
       "id": "logical-fallacies",
       "name": "Logical Fallacy",
-      "hint": "The conclusion doesn't follow from the facts",
-      "definition": "An argument whose conclusion doesn't follow from its premises: oversimplifying, attacking the person, false choices, or \"it happened naturally before, so it's natural now.\"",
-      "icon": "chain"
+      "hint": "Broken logic: one cause for everything, a false choice",
+      "definition": "Reasoning that breaks in a way the other four tricks don't name: one cause for everything, a false choice, attacking the messenger, \"someone else is worse,\" or \"it happened naturally before, so it's natural now.\" Every trick is bad reasoning; this is the category for the rest.",
+      "icon": "chain",
+      "notThis": "Logical Fallacy needs reasoning that breaks in a way none of the other four tricks names."
     },
     {
       "id": "impossible-expectations",
       "name": "Impossible Expectations",
-      "hint": "Demands perfect certainty before accepting anything",
-      "definition": "Demanding unrealistic certainty, like perfect day-to-day forecasts, before accepting well-established science.",
-      "icon": "infinity"
+      "hint": "Demands certainty science can't give",
+      "definition": "Demanding a certainty from the science that it can't give, like an exact date or a perfect forecast, before accepting it or acting on it. (Demanding perfection from people is a false choice, under Logical Fallacy.)",
+      "icon": "infinity",
+      "notThis": "Impossible Expectations needs a demand for certainty the science can’t give."
     },
     {
       "id": "cherry-picking",
       "name": "Cherry Picking",
       "hint": "Spotlights the data that fits, hides the rest",
       "definition": "Choosing the one year, place, or data point that supports a claim while ignoring the larger body of evidence.",
-      "icon": "cherry"
+      "icon": "cherry",
+      "notThis": "Cherry Picking needs one moment or data point standing in for the trend."
     },
     {
       "id": "conspiracy",
       "name": "Conspiracy Theory",
       "hint": "Assumes a secret plot behind the science",
       "definition": "Claiming that scientists, agencies, or \"they\" are secretly coordinating a lie, and treating any counter-evidence as part of the cover-up.",
-      "icon": "pins"
+      "icon": "pins",
+      "notThis": "Conspiracy Theory needs a secret plot or a hidden “they.”"
     },
     {
       "id": "legit",
       "name": "Looks Legit",
-      "hint": "Accurate, sourced, not overstated",
-      "definition": "Not every post is misinformation. Accurate posts make specific claims, name sources you can check, and don't stretch the evidence.",
-      "icon": "check"
+      "hint": "Matches the evidence, no stretching",
+      "definition": "Not every post is misinformation. Accurate posts make claims that match the evidence and don't stretch it. A named source helps, but real sources get stretched too, and a true post may not cite one.",
+      "icon": "check",
+      "notThis": "Looks Legit needs a claim that matches the evidence. A real source alone isn’t enough."
     }
   ],
   "posts": [
@@ -120,7 +126,11 @@
           "answer": "logical-fallacies",
           "note": "“Too small to matter” is a fallacy too. But the post is selling the speaker: a dentist dressed up as the expert."
         }
-      ]
+      ],
+      "whyNot": {
+        "legit": "A blue check and a “Dr.” aren’t evidence. DDS means the speaker studies teeth, not the atmosphere.",
+        "conspiracy": "Nothing here claims a secret plot. The pitch is the speaker’s title."
+      }
     },
     {
       "id": "snowpack-record",
@@ -131,7 +141,7 @@
         "avatar": "assets/avatars/baldy.webp"
       },
       "time": "5h",
-      "text": "2023: BIGGEST snowpack Utah has EVER recorded ❄️❄️ remember when they said climate change was killing our winters?? lol #sendit",
+      "text": "Utah Division of Water Resources: 2023 was the BIGGEST snowpack Utah has EVER recorded ❄️ remember when they said climate change was killing our winters?? lol",
       "image": {
         "src": "assets/photos/post-snowpack.webp",
         "alt": "Deep snow on the slopes and cabins of Little Cottonwood Canyon near Alta, with peaks behind.",
@@ -142,7 +152,7 @@
       "shares": 1377,
       "replies": 402,
       "answer": "cherry-picking",
-      "explanation": "2023 really was a record, but one year isn’t a trend. Cherry picking spotlights the data point that fits.",
+      "explanation": "The source is real and 2023 was a record, but one year isn’t a trend. Real sources can be cherry-picked too.",
       "fact": "From 1955 to 2023, April snowpack fell at 81% of measured sites across the western U.S.",
       "sources": [
         {
@@ -161,7 +171,11 @@
           "status": "verified",
           "check": "Checked 2026-10-31. \"From 1955 to 2023, April snowpack declined at 81 percent of the sites measured\" and \"about an 18 percent decline.\" The live epa.gov URL returned 404, so this links EPA's official archive."
         }
-      ]
+      ],
+      "whyNot": {
+        "legit": "Checking the source was smart, but a real fact can still mislead. Check what the post concludes from it.",
+        "logical-fallacies": "The leap is real, but it’s built on one hand-picked year. That specific move is Cherry Picking."
+      }
     },
     {
       "id": "weather-app",
@@ -186,7 +200,7 @@
       "shares": 96,
       "replies": 58,
       "answer": "impossible-expectations",
-      "explanation": "Demanding perfect weekend forecasts before trusting climate projections is an impossible expectation. Weather is one coin flip; climate is a thousand.",
+      "explanation": "Demanding a perfect weekend forecast before trusting climate projections is an impossible expectation. Weather is one coin flip; climate, a thousand.",
       "fact": "NASA: 14 of 17 climate models from 1970–2007 matched later warming once actual CO₂ and other drivers were accounted for.",
       "sources": [
         {
@@ -211,7 +225,10 @@
           "answer": "logical-fallacies",
           "note": "Comparing a weekend forecast to a climate projection is a false analogy. But the main move is the demand: perfect forecasts first, or no trust."
         }
-      ]
+      ],
+      "whyNot": {
+        "cherry-picking": "It does lean on one bad forecast, but the move is the demand: perfect forecasts first, or no trust."
+      }
     },
     {
       "id": "inversion-psa",
@@ -235,15 +252,8 @@
       "replies": 22,
       "answer": "legit",
       "explanation": "Legit: a checkable source, a claim that matches it, and no overstatement.",
-      "fact": "Utah DEQ: during an inversion, cold air gets trapped under warmer air, holding pollution near the ground.",
+      "fact": "Utah DEQ: vehicles make almost half the emissions that form PM2.5 during winter inversions.",
       "sources": [
-        {
-          "label": "Inversions",
-          "publisher": "Utah Department of Environmental Quality",
-          "url": "https://deq.utah.gov/daq/inversions",
-          "status": "verified",
-          "check": "Checked 2026-10-31. \"Cold air at the surface gets trapped under a layer of warmer air\"; \"Pollutants from vehicles, wood burning, area sources, and industry become trapped near the ground.\""
-        },
         {
           "label": "PM2.5 Moderate Area State Implementation Plans (2009-2014)",
           "publisher": "Utah Department of Environmental Quality",
@@ -252,13 +262,24 @@
           "check": "Checked 2026-10-31. \"Vehicles contribute almost half of the emissions that lead to the formation of PM2.5 during winter inversions.\""
         },
         {
+          "label": "Inversions",
+          "publisher": "Utah Department of Environmental Quality",
+          "url": "https://deq.utah.gov/daq/inversions",
+          "status": "verified",
+          "check": "Checked 2026-10-31. \"Cold air at the surface gets trapped under a layer of warmer air\"; \"Pollutants from vehicles, wood burning, area sources, and industry become trapped near the ground.\""
+        },
+        {
           "label": "Utah's Air Quality Challenges",
           "publisher": "Utah Department of Government Operations",
           "url": "https://govops.utah.gov/resource-stewardship/air-quality-issues/utahs-air-quality-challenges/",
           "status": "verified",
           "check": "Checked 2026-10-31. Mobile sources 48%, area sources 39%, point sources 13% \"of a typical inversion.\" (Mobile includes trains and aircraft, not just cars.)"
         }
-      ]
+      ],
+      "whyNot": {
+        "fake-experts": "Utah DEQ measures Utah’s air for a living. That’s the right expert, not a fake one.",
+        "logical-fallacies": "The logic holds: the mountains trap the air, and the pollution in it is ours."
+      }
     },
     {
       "id": "lake-bonneville",
@@ -312,13 +333,13 @@
         "prompt": "Which reply would help Uncle Gary most?",
         "options": [
           {
-            "text": "True, it shrank naturally! But wildfires don’t make arson impossible. Past natural change doesn’t explain today’s.",
+            "text": "True, it shrank on its own! But that was then. Today’s warming tracks what we burn.",
             "points": 50,
-            "feedback": "Agrees with the true part, then breaks the logic with a picture.",
-            "reaction": "Huh. Fair point about arson."
+            "feedback": "Agrees with the true part, then shows why “natural then” isn’t “natural now.”",
+            "reaction": "Huh. Never thought of that."
           },
           {
-            "text": "Love that trail! Crazy to picture the valley underwater. Climate really has always changed, huh? 🏞️",
+            "text": "Love that trail! Crazy to picture it underwater. Climate really has always changed, huh? 🏞️",
             "points": 25,
             "feedback": "Friendly, but it agrees with the false finish. The myth wins.",
             "reaction": "Exactly! Glad someone gets it 👍"
@@ -336,6 +357,10 @@
             "reaction": "Wow. Okay then. 🙄"
           }
         ]
+      },
+      "whyNot": {
+        "cherry-picking": "It isn’t one hand-picked data point. It’s a leap from “natural then” to “natural now.”",
+        "legit": "The trail and the ancient lake are real. That today’s change is natural doesn’t follow."
       }
     },
     {
@@ -377,7 +402,10 @@
           "status": "verified",
           "check": "Checked 2026-10-31. \"an additional 16,000 square miles of western forest lands to burn between 1984 and 2015.\""
         }
-      ]
+      ],
+      "whyNot": {
+        "logical-fallacies": "The reasoning is bad, but the specific move is a secret plot: “they” and “follow the money.”"
+      }
     },
     {
       "id": "gsl-rebound",
@@ -432,9 +460,9 @@
         "prompt": "Which reply would help Aunt Deb most?",
         "options": [
           {
-            "text": "So fun you went! Sadly that 2023 jump didn’t last. By January 2026 it was near its record low.",
+            "text": "So fun you went! That snowy year helped, but it’s been dropping again since 💙",
             "points": 50,
-            "feedback": "Warm, and shows why one good year misleads.",
+            "feedback": "Warm, and gently shows why one good year misleads.",
             "reaction": "Oh! I didn’t know it dropped again 💕"
           },
           {
@@ -444,7 +472,7 @@
             "reaction": "Okay, Mr. Encyclopedia 🙄"
           },
           {
-            "text": "Glad you got out there! Still a ways to go, I hear, but yay for more water 💙",
+            "text": "Glad you got out there! Still a ways to go, I hear, but yay for water 💙",
             "points": 25,
             "feedback": "Kind, but it never says the rise didn’t last. The myth survives.",
             "reaction": "Right?! Crisis over 🙌"
@@ -456,6 +484,10 @@
             "reaction": "Wow. I CAN read, thanks."
           }
         ]
+      },
+      "whyNot": {
+        "legit": "Seeing it yourself is real. Calling the crisis over from one good year is the trick.",
+        "logical-fallacies": "The leap is real, but it rests on one hand-picked year. That specific move is Cherry Picking."
       }
     },
     {
@@ -469,7 +501,7 @@
         "avatar": "assets/avatars/earth.webp"
       },
       "time": "2d",
-      "text": "the great salt lake is dying ONLY because of climate change. our water use has nothing to do with it 💔 share if you care",
+      "text": "NASA’s satellite photos show it: the great salt lake is dying ONLY because of climate change. our water use has nothing to do with it 💔 share if you care",
       "image": {
         "src": "assets/photos/post-modis.webp",
         "alt": "Satellite image of the Great Salt Lake in June 2022, ringed by wide pale areas of exposed lakebed.",
@@ -480,9 +512,17 @@
       "shares": 1893,
       "replies": 388,
       "answer": "logical-fallacies",
-      "explanation": "Misinformation comes from every direction. One cause oversimplifies: so far the biggest factor is water diverted before it reaches the lake.",
-      "fact": "Utah Geological Survey: experts estimate water diversions have lowered the lake 7 to 11 feet and roughly halved its volume.",
+      "explanation": "Misinformation comes from every side. NASA’s photo shows the shrinking, not the cause; the biggest factor so far is upstream water use.",
+      "fact": "NASA’s caption for this photo names water diversions and a warmer, drier climate. Diversions have lowered the lake 7 to 11 feet.",
       "sources": [
+        {
+          "label": "Rapidly Shrinking Great Salt Lake (MODIS image of the day, June 16, 2022; archived copy)",
+          "publisher": "NASA Goddard Space Flight Center",
+          "year": 2022,
+          "url": "https://web.archive.org/web/20220616153628/https://modis.gsfc.nasa.gov/gallery/individual.php?db_date=2022-06-16",
+          "status": "verified",
+          "check": "Checked 2026-11-11 (Internet Archive copy; modis.gsfc.nasa.gov refused connections). \"Increasing diversion of the water of three rivers feeding the lake for human use and agricultural purposes means less inflow to the lake. Increasingly warm climate and a long-standing drought mean more water evaporating from the lake.\""
+        },
         {
           "label": "Commonly Asked Questions About Utah's Great Salt Lake & Lake Bonneville",
           "publisher": "Utah Geological Survey",
@@ -498,7 +538,11 @@
           "status": "TODO: VERIFY",
           "check": "Confirm the abstract concludes that consumptive water use, not long-term climate change, has greatly reduced Great Salt Lake. nature.com redirected the automated check to a login page."
         }
-      ]
+      ],
+      "whyNot": {
+        "legit": "Checking for a source was smart, but this one is stretched: no photo can show “ONLY” one cause.",
+        "cherry-picking": "It doesn’t hand-pick data. It pins everything on one cause, which is broken logic."
+      }
     },
     {
       "id": "hypocrite",
@@ -516,7 +560,7 @@
       "shares": 2,
       "replies": 13,
       "answer": "logical-fallacies",
-      "explanation": "It attacks the messenger and offers a false choice: be perfect or be quiet. PWS 180 calls personal vs. systemic action \"the greatest false choice.\"",
+      "explanation": "It attacks the messenger and offers a false choice: be perfect or be quiet. PWS 180 calls this “the greatest false choice.”",
       "fact": "IPCC: changes in how we use energy and goods could cut end-use emissions 40–70% by 2050, with policy support.",
       "sources": [
         {
@@ -539,9 +583,9 @@
         "prompt": "Which reply would help Brody most?",
         "options": [
           {
-            "text": "Guilty, I drive too! But it’s not perfect-or-quiet. Better buses and cleaner cars help everyone, me included.",
+            "text": "Guilty, I drive too! But nobody has to be perfect to want better buses.",
             "points": 50,
-            "feedback": "Owns the true part, then swaps “perfect or quiet” for what actually helps.",
+            "feedback": "Owns the true part, then drops the perfect-or-quiet setup without a fight.",
             "reaction": "Lol fair. Buses would be nice."
           },
           {
@@ -563,6 +607,10 @@
             "reaction": "lol ok 🤡"
           }
         ]
+      },
+      "whyNot": {
+        "impossible-expectations": "It does demand perfection, but from people, not certainty from the science. That’s a false choice: be perfect or be quiet.",
+        "fake-experts": "No expert is involved. It attacks the people talking instead of what they say."
       }
     },
     {
@@ -598,7 +646,10 @@
           "status": "verified",
           "check": "Checked 2026-10-31. \"In Utah, about 95% of our water supply comes from snowpack.\""
         }
-      ]
+      ],
+      "whyNot": {
+        "cherry-picking": "It’s one number, but it’s the statewide share, not a hand-picked moment."
+      }
     },
     {
       "id": "its-the-sun",
@@ -626,7 +677,10 @@
           "status": "verified",
           "check": "Checked 2026-10-31. Solar energy shows \"no net increase since the 1950s. Over the same period, global temperature has risen markedly.\""
         }
-      ]
+      ],
+      "whyNot": {
+        "cherry-picking": "It does skip what the sun has done lately, but the core move is one cause for everything."
+      }
     },
     {
       "id": "declaration",
@@ -667,7 +721,11 @@
           "status": "verified",
           "check": "Checked 2026-10-31. Abstract: consensus \"exceeds 99% in the peer reviewed scientific literature.\""
         }
-      ]
+      ],
+      "whyNot": {
+        "logical-fallacies": "“1,600 can’t be wrong” is a numbers fallacy, but the pitch is the signers as experts. Few study climate.",
+        "conspiracy": "It doesn’t claim a secret plot. It leans on a crowd of names as experts."
+      }
     },
     {
       "id": "gsl-certainty",
@@ -703,7 +761,11 @@
           "status": "verified",
           "check": "Checked 2026-10-31. South end \"sits at 4,191.6 feet\"; \"only three feet higher than its record low\" (4,188.5 ft, Nov 2022); the 2023 snowpack gave \"a temporary boost.\" A Salt Lake Tribune story republished by UPR through the Great Salt Lake Collaborative (byline checked 2026-11-04)."
         }
-      ]
+      ],
+      "whyNot": {
+        "logical-fallacies": "Every trick is bad reasoning. When a post demands an exact date before anyone acts, the specific name is Impossible Expectations.",
+        "cherry-picking": "Nothing is hand-picked here. It refuses to act until the timing is certain."
+      }
     },
     {
       "id": "noaa-adjusts",
@@ -744,7 +806,11 @@
           "status": "verified",
           "check": "Checked 2026-11-01. \"adjustments actually have the net effect of reducing the amount of long-term warming\" (mostly from ocean data; land adjustments add warming)."
         }
-      ]
+      ],
+      "whyNot": {
+        "legit": "A headline isn’t evidence. NOAA publishes how and why it adjusts old records.",
+        "logical-fallacies": "The reasoning is bad, but the specific move is a cover-up: “ask yourself WHY.”"
+      }
     },
     {
       "id": "cloud-seeding",
@@ -772,7 +838,10 @@
           "status": "verified",
           "check": "Checked 2026-11-01 (PDF). Generators use \"a 2% silver iodide solution\"; goal is \"to augment wintertime snowpack\"; \"operational programs in Utah since the mid-1970s\"; cost sharing from the Utah Division of Water Resources."
         }
-      ]
+      ],
+      "whyNot": {
+        "logical-fallacies": "It does jump to conclusions, but through a cover story: “calling it cloud seeding.”"
+      }
     },
     {
       "id": "logan-cold",
@@ -806,21 +875,21 @@
         "prompt": "Which reply would help Grandpa most?",
         "options": [
           {
-            "text": "Stay warm! Cold snaps still happen, but in the 2000s heat records beat cold ones 2 to 1.",
+            "text": "Stay warm, Grandpa! Cold mornings still happen. They’re just getting rarer while record-hot days pile up.",
             "points": 50,
-            "feedback": "Kind, then trades one cold morning for the whole record book.",
-            "reaction": "Huh. Two to one? 🥶"
+            "feedback": "Kind, then trades one cold morning for the bigger pattern.",
+            "reaction": "Huh. Rarer, huh? I’ll take it 🥶"
           },
           {
-            "text": "Brr, stay warm, Grandpa! 🥶 Weather’s been so crazy lately. Who even knows what’s going on anymore?",
+            "text": "Brr, stay warm, Grandpa! 🥶 Weather’s been so crazy lately. Who even knows anymore?",
             "points": 25,
             "feedback": "Kind, but it agrees nobody knows. He leaves more sure he’s right.",
             "reaction": "Exactly! Nobody knows 😂"
           },
           {
-            "text": "People always say a cold day disproves global warming, but that’s just not how it works.",
+            "text": "People say a cold day disproves warming, but the West sets over two heat records per cold one.",
             "points": 25,
-            "feedback": "Right idea, but it repeats the myth first and brushes him off.",
+            "feedback": "Accurate, but it repeats the myth first and reads like a lecture.",
             "reaction": "Mm-hm. We’ll see."
           },
           {
@@ -830,6 +899,10 @@
             "reaction": "Well excuse me 😤"
           }
         ]
+      },
+      "whyNot": {
+        "logical-fallacies": "The leap is real, but it rests on one cold morning. That specific move is Cherry Picking.",
+        "impossible-expectations": "Grandpa isn’t demanding certainty. He’s treating one morning as the whole trend."
       }
     },
     {
@@ -872,7 +945,11 @@
           "status": "verified",
           "check": "Checked 2026-11-01. A modeling study of how dust from the dry lakebed reaches the Wasatch Front; \"Aeolian dust from the shrinking Great Salt Lake (GSL) is a major concern.\""
         }
-      ]
+      ],
+      "whyNot": {
+        "fake-experts": "These are scientists studying their own field. That’s the right kind of expert.",
+        "logical-fallacies": "It doesn’t overstate: metals in the dust, not mass poisoning. Wanting the lake refilled follows from that."
+      }
     },
     {
       "id": "smoke-aqi",
@@ -883,7 +960,7 @@
         "initials": "SO"
       },
       "time": "3h",
-      "text": "AQI 162 from the fires 🔥 AirNow says at this level even healthy people can feel it. skipping my run today",
+      "text": "AQI 162 from the fires 🔥 at this level even healthy people can start to feel it. skipping my run today",
       "graphic": {
         "type": "aqi",
         "place": "Salt Lake City",
@@ -892,13 +969,13 @@
         "detail": "Wildfire smoke · PM2.5",
         "time": "4:10 PM"
       },
-      "tell": "AirNow says",
-      "tellNote": "Checkable source",
+      "tell": "even healthy people can start to feel it",
+      "tellNote": "Matches the AQI scale",
       "likes": 156,
       "shares": 40,
       "replies": 12,
       "answer": "legit",
-      "explanation": "Legit: it cites the official AQI scale and describes it accurately. Reasonable caution, not panic.",
+      "explanation": "No source named, but it matches the official AQI scale without overstating. Check the claim, not the citation.",
       "fact": "AirNow: at 151–200 (“Unhealthy”), some members of the general public may feel health effects; sensitive groups may feel worse.",
       "sources": [
         {
@@ -908,7 +985,11 @@
           "status": "verified",
           "check": "Checked 2026-11-01. Unhealthy (151 to 200): \"Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.\""
         }
-      ]
+      ],
+      "whyNot": {
+        "logical-fallacies": "Nothing breaks here: AQI 162 really is “Unhealthy,” and skipping a run is a reasonable response.",
+        "cherry-picking": "It’s one reading, but it’s about today’s air and today’s run. It isn’t claiming a trend."
+      }
     },
     {
       "id": "china-excuse",
@@ -956,13 +1037,13 @@
         "prompt": "Which reply would help Kade most?",
         "options": [
           {
-            "text": "True, China’s bigger. But cars make about half our winter smog, and cutting that cuts CO₂ too.",
+            "text": "True, China’s bigger. But our smog is homemade, and driving less helps lungs and climate.",
             "points": 50,
             "feedback": "Grants the true part, then shows why local action still pays off.",
             "reaction": "Huh. Never thought about the smog."
           },
           {
-            "text": "Haha fair, it does feel kind of pointless sometimes 😅 no pressure, do what works for you.",
+            "text": "Haha fair, it does feel kind of pointless sometimes 😅 no pressure, man.",
             "points": 25,
             "feedback": "Friendly, but agreeing nothing matters is the fallacy itself.",
             "reaction": "Right?? Glad you get it 🤙"
@@ -980,6 +1061,10 @@
             "reaction": "k 🙄"
           }
         ]
+      },
+      "whyNot": {
+        "cherry-picking": "Nothing is hand-picked. It says a bigger problem elsewhere cancels ours, which doesn’t follow.",
+        "impossible-expectations": "It isn’t demanding certainty. It says a bigger problem elsewhere cancels ours, which doesn’t follow."
       }
     },
     {
@@ -1013,10 +1098,10 @@
         "prompt": "Which reply would help Tyler most?",
         "options": [
           {
-            "text": "You know the plant! But that haze isn’t fog. DEQ measures it: car exhaust, wood smoke, industry.",
+            "text": "You’d know the plant! But that brown layer isn’t water. It’s pollution trapped by cold air.",
             "points": 50,
-            "feedback": "Gives him credit, then swaps “fog” for what’s actually measured.",
-            "reaction": "Huh. What’s the DEQ thing?"
+            "feedback": "Gives him credit, then swaps “fog” for what’s really in the air.",
+            "reaction": "Huh. So what’s in it?"
           },
           {
             "text": "People think inversions are just fog, but that’s a myth. It’s pollution trapped under warm air.",
@@ -1025,7 +1110,7 @@
             "reaction": "Not a myth. I see it daily."
           },
           {
-            "text": "Ha, you’d know better than me! It does get super thick some days. Stay safe out there 🙌",
+            "text": "Ha, you’d know better than me! It gets so thick some days. Stay safe out there 🙌",
             "points": 25,
             "feedback": "Friendly, but it hands him the point. “Just fog” now has your vote.",
             "reaction": "See? Just fog 😎"
@@ -1037,6 +1122,10 @@
             "reaction": "Wow. Thanks, cuz. 🙄"
           }
         ]
+      },
+      "whyNot": {
+        "logical-fallacies": "The logic is weak, but it leans on insider credentials: “I work at the refinery, trust me.”",
+        "legit": "Working near a smokestack isn’t measuring the air. DEQ’s measurements say otherwise."
       }
     },
     {
@@ -1065,7 +1154,11 @@
           "status": "verified",
           "check": "Checked 2026-10-31. \"Cold air at the surface gets trapped under a layer of warmer air\"; \"Pollutants from vehicles, wood burning, area sources, and industry become trapped near the ground.\""
         }
-      ]
+      ],
+      "whyNot": {
+        "cherry-picking": "It doesn’t hand-pick data. It pins inversions on the wrong single cause.",
+        "legit": "Caring isn’t evidence. Inversions are cold air trapped under warm air, and the haze is our pollution."
+      }
     }
   ],
   "ranks": [
